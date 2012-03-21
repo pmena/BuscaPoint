@@ -1,0 +1,71 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    <title>    .:: BuscaPoint - Todos los sitios que necesites y más ::.</title>      
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/jquery.js" type="text/javascript" language="javascript"></script>
+    <script src="/Scripts/index.js" type="text/javascript" language="javascript"></script>
+</head>
+
+<body style='margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;' bgcolor='#FFCC33'>
+    <div class="login">
+        <table style="width:100%;background-color:#FF6600;line-height:300%" cellpadding='0' cellspacing='0' border="0">
+				<tr>
+					<td width='5%' style='font-family:"Verdana";font-size:10px;color:#3333CC' nowrap="nowrap">
+						&nbsp;
+					</td>
+                    <td width='5%' style='font-family:"Verdana";font-size:14px;color:#3333CC;' nowrap="nowrap">
+							<a href='/'><strong>INICIO</strong></a>
+					</td>
+					<td width='10%' style='font-family:"Verdana";font-size:14px;color:#3333CC;' nowrap="nowrap">
+							<b>BuscaPoint&nbsp;</b><a href='/Home/Search'><img src="/img/icon_lupa1.gif" border="0"></a>
+					</td>
+                    <td nowrap="nowrap" align="right">
+                        <div id="lblfrmLogin" style="color:#3333CC">&nbsp;</div>
+                    </td>
+					<td width='30%' style='font-family:"Verdana";font-size:10px;color:#3333CC' nowrap="nowrap" align="right">						                        
+                        <% if (Session["Usuario"] == null)
+                           { %>                         
+                            <form id='frmLogin' name='frm_login' action='/Home/Login' method="POST">
+		    				    <input type='text' id='txt_login' name='txt_login' placeholder='Usuario' maxlength='50' value='' size='15'>&nbsp;
+	    					    <input type='password' id='txt_clave' name='txt_clave'  placeholder='Password' maxlength='50' value='' size='15'>&nbsp;
+    						    <input type='submit' id='btn_entrar' name='btn_entrar' value='Entrar' size='15'>&nbsp;
+						        ¿No eres usuario?&nbsp;
+                            </form>
+                        <% } else {  %>
+                            Bienvenido 
+                            <strong> <% Response.Write(Session["Usuario"].ToString().ToUpper()); %> </strong>
+                            &nbsp;                                                                           
+                            Usted se encuentra en
+                            <strong> <% Response.Write(Session["Usuario_Posicion"].ToString().ToUpper()); %> </strong>
+                            &nbsp;
+                        <%  } %>
+                    </td>
+                    <td width='10%' style='font-family:Verdana;font-size:10px;font-color:#3333CC' nowrap="nowrap">
+                        <% if (Session["Usuario"] == null){ %>                         
+                            <form id='Form1' name='frm_login' action='/Home/Registrar' method="POST">
+						        <input type='submit' id='btn_registrar' name='btn_registrar' value='Registrate aquí' size='15' onclick='javascript:document.getElementById("frm_login").action;'>&nbsp;
+						    </form>
+                        <% } else {  %>
+                            <a href="/Home/Logout" onclick="if(confirm('Seguro que desea cerrar sesión?')){ return true; } return false;" >Logout </a> 
+                        <%  } %>                        
+					</td>
+					<td width='5%' style='font-family:"Verdana";font-size:10px;font-color:#3333CC'>
+						&nbsp;
+					</td>
+				</tr>
+			</table>
+    </div>
+    <div class="page">
+        <div id="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+            <div id="footer">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
