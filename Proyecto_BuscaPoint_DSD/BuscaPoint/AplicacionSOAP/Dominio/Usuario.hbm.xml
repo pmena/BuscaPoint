@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="AplicacionSOA"
+                   namespace="AplicacionSOA.Dominio"
+                   default-lazy="false">
+  <class name="Usuario" table="USUARIO">
+    <id name="idUsuario" column="idUsuario">
+      <generator class="increment" />
+    </id>
+    <property name="nombre" column="nombre" />
+    <property name="apellido" column="apellido" />
+    <property name="usuario" column="usuario" />
+    <property name="clave" column="clave" />
+    <property name="idDistrito" column="idDistrito" />
+    <property name="edad" column="edad" />
+    <property name="sexo" column="sexo" />
+    <property name="correo" column="correo" />    
+  </class>
+</hibernate-mapping>
