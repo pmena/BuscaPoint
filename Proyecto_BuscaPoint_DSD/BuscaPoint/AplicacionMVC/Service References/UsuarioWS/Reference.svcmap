@@ -22,7 +22,6 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="Usuarios.disco" MetadataType="Disco" ID="315958d5-385e-415d-a760-f0c8b67f024f" SourceId="1" SourceUrl="http://localhost:2263/Usuarios.svc?disco" />
-    <MetadataFile FileName="Usuarios.xsd" MetadataType="Schema" ID="f42d458f-33a1-495e-8068-afd52ad0f941" SourceId="1" SourceUrl="http://localhost:2263/Usuarios.svc?xsd=xsd2" />
     <MetadataFile FileName="Usuarios.wsdl" MetadataType="Wsdl" ID="5aa30c3a-82fb-4bba-9b6b-6ca5f7930aaf" SourceId="1" SourceUrl="http://localhost:2263/Usuarios.svc?wsdl" />
     <MetadataFile FileName="Usuarios1.xsd" MetadataType="Schema" ID="ba83501e-fdc8-4dad-ab67-12ab607d89c9" SourceId="1" SourceUrl="http://localhost:2263/Usuarios.svc?xsd=xsd0" />
     <MetadataFile FileName="Usuarios2.xsd" MetadataType="Schema" ID="bcfef85a-4719-4af4-b523-8000dc81a7c0" SourceId="1" SourceUrl="http://localhost:2263/Usuarios.svc?xsd=xsd1" />

@@ -5,9 +5,12 @@ $(document).ready(function () {
         var txtPassword = $("#txt_clave");
 
         var valTxtUsuario = $.trim(txtUsuario.val());
-        var valTxtPassword = $.trim(txtPassword.val());       
+        var valTxtPassword = $.trim(txtPassword.val());
 
-        $("#lblfrmLogin").html("&nbsp;");
+        $("#frmLogin").find("label").each(function () {
+            $(this).html("&nbsp;");
+        });
+
         txtUsuario.css("border", "");
         txtPassword.css("border", "");
         txtUsuario.css("color", "");
@@ -29,7 +32,7 @@ $(document).ready(function () {
 
         if ((valTxtUsuario != "") && (valTxtPassword != "")) {
             return true;
-        }        
+        }
         return false;
     });
 });

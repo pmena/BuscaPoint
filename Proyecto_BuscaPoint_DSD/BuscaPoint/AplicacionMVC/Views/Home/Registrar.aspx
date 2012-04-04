@@ -229,9 +229,12 @@
 								&nbsp;
 							</td>
 							<td colspan='3' height='35px' style='font-family:"Verdana";font-size:14px;font-color:#3333CC;'>
-								<div id='mensaje_ok_registro' style='display:none'>
-									<b><font color='red'>Felicitaciones, Usuario! Ya está registrado en BuscaPoint!</font></b>
-									<br><br>
+                                <% if (Session["Register_result"] != null) {  %>
+                                        <b><font color='green'><% Response.Write(Session["Register_result"].ToString()); %></font></b>    
+                                        <br /><br />
+                                <%  Session["Register_result"] = null;
+                                    } %>
+								<div id='mensaje_ok_registro' style='display:none'>                                    															
 								</div>
 								<div id='mensaje_error_registro' style='display:none'>
 									<b><font color='red'>Error en ingreso de datos.</font></b>
@@ -245,8 +248,19 @@
 								&nbsp;
 							</td>
 							<td height='30px' width='48%' style='font-family:"Verdana";font-size:14px;font-color:#3333CC;'>
-								<input type='text' id='txt_nombres' name='txt_nombres' value='Nombres' size='25' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>&nbsp;
-								<input type='text' id='txt_apellidos' name='txt_apellidos' value='Apellidos' size='25' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>&nbsp;
+								<input type='text' id='txt_nombres' name='txt_nombres' value='' placeholder='Ingrese Nombres' size='25' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>&nbsp;
+								<input type='text' id='txt_apellidos' name='txt_apellidos' value='' placeholder='Ingrese Apellidos' size='25' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>&nbsp;
+							</td>
+							<td height='30px' width='50%' >
+								&nbsp;
+							</td>
+						</tr>
+      					<tr>
+							<td align='center' height='30px' width='2%' >
+								&nbsp;
+							</td>
+							<td height='30px' width='48%' style='font-family:"Verdana";font-size:14px;font-color:#3333CC;'>
+								<input type='text' id='txt_edad' name='txt_edad' value='' placeholder='Ingrese su edad' maxlength="3" size='40' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>&nbsp;
 							</td>
 							<td height='30px' width='50%' >
 								&nbsp;
@@ -257,7 +271,7 @@
 								&nbsp;
 							</td>
 							<td height='30px' width='48%' style='font-family:"Verdana";font-size:14px;font-color:#3333CC;'>
-								<input type='text' id='txt_email' name='txt_email' value='Email' size='40' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>&nbsp;
+								<input type='text' id='txt_email' name='txt_email' value='' placeholder='Ingrese Correo electrónico' size='40' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>&nbsp;
 							</td>
 							<td height='30px' width='50%' >
 								&nbsp;
@@ -268,7 +282,7 @@
 								&nbsp;
 							</td>
 							<td height='30px' width='48%' style='font-family:"Verdana";font-size:14px;font-color:#3333CC;'>
-								<input type='text' id='txt_usr' name='txt_usr' value='Usuario' size='25' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>&nbsp;
+								<input type='text' id='txt_usr' name='txt_usr' value='' placeholder='Ingrese Usuario' size='25' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>&nbsp;
 							</td>
 							<td height='30px' width='50%' >
 								&nbsp;
@@ -280,7 +294,7 @@
 							</td>
 							<td height='30px' width='48%' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>
 								<b>Contraseña:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type='password' id='txt_pwd' name='txt_pwd' size='25' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>&nbsp;
+								<input type='password' placeholder='Ingrese contraseña ' id='txt_pwd' name='txt_pwd' size='25' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>&nbsp;
 							</td>
 							<td height='30px' width='50%' >
 								&nbsp;
@@ -291,7 +305,7 @@
 								&nbsp;
 							</td>
 							<td height='30px' width='48%' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>
-								<b>Confirmar Contraseña:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='password' id='txt_confirmar_pwd' name='txt_confirmar_pwd' size='25' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>&nbsp;
+								<b>Confirmar Contraseña:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='password' id='txt_confirmar_pwd' name='txt_confirmar_pwd' size='25' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;' placeholder='Confirme contraseña'>&nbsp;
 							</td>
 							<td height='30px' width='50%' >
 								&nbsp;
@@ -302,7 +316,7 @@
 								&nbsp;
 							</td>
 							<td height='30px' width='48%' style='font-family:"Verdana";font-size:14px;font-color:#3333CC;'>
-								<input type='text' id='txt_telefono' name='txt_telefono' value='Teléfono (opcional)' size='25' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>&nbsp;
+								<input type='text' id='txt_telefono' placeholder='Ingrese teléfono' name='txt_telefono' value='' size='25' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>&nbsp;
 							</td>
 							<td height='30px' width='50%' >
 								&nbsp;
@@ -341,38 +355,7 @@
 							<td height='30px' width='48%' style='font-family:"Verdana";font-size:10px;font-color:#3333CC;'>
 								<b>Ubicación inicial:</b>&nbsp;&nbsp;
 								<select name="sel_distrito" id="sel_distrito" style='font-family:"Verdana";font-size:10px;font-color:#3333CC;' />
-									<option value=''>--- Selecciona distrito ---</option>
-									<option value='1'>Cercado de Lima</option>
-									<option value='3'>Ate</option>
-									<option value='4'>Barranco</option>
-									<option value='5'>Breña</option>
-									<option value='7'>Comas</option>
-									<option value='9'>Chorrillos</option>
-									<option value='10'>El Agustino</option>
-									<option value='11'>Jesús María</option>
-									<option value='12'>La Molina</option>
-									<option value='13'>La Victoria</option>
-									<option value='14'>Lince</option>
-									<option value='17'>Magdalena del Mar</option>
-									<option value='18'>Miraflores</option>
-									<option value='21'>Pueblo Libre</option>
-									<option value='22'>Puente Piedra</option>
-									<option value='25'>Rimac</option>
-									<option value='27'>San Isidro</option>
-									<option value='28'>Independencia</option>
-									<option value='29'>San Juan de Miraflores</option>
-									<option value='30'>San Luis</option>
-									<option value='31'>San Martin de Porres</option>
-									<option value='32'>San Miguel</option>
-									<option value='33'>Santiago de Surco</option>
-									<option value='34'>Surquillo</option>
-									<option value='35'>Villa María del Triunfo</option>
-									<option value='36'>San Juan de Lurigancho</option>
-									<option value='38'>Santa Rosa</option>
-									<option value='39'>Los Olivos</option>
-									<option value='41'>San Borja</option>
-									<option value='42'>Villa El Savador</option>
-									<option value='43'>Santa Anita</option>
+                                    <% %>
 								</select>
 								&nbsp;<img v-align="bottom" src="/img/ico_ayuda.gif" alt="Esta es tu ubicación por defecto para búsqueda de establecimientos"></img>
 							</td>
