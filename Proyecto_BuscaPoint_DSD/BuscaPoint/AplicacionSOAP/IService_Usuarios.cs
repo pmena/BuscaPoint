@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using AplicacionSOAP.Dominio;
+using AplicacionSOA.Dominio;
 
 namespace AplicacionSOA
 {
@@ -18,7 +18,7 @@ namespace AplicacionSOA
         // TODO: Add your service operations here
         [OperationContract]
         //Funcion que permite registrar un usuario de BuscaPoint
-        Usuario Ingresar_usuario(String nombre, String apellido, String usuario, String clave, String telefono, String correo, int edad, int sexo, int codDist, int codProv, int codDpto);
+        String Ingresar_usuario(String nombre, String apellido, String usuario, String clave, String telefono, String correo, int edad, int sexo, int codDist, int codDpto);       
         
         //Funcion que permite a un usuario loguearse al sistema BuscaPoint
         [OperationContract]
@@ -30,7 +30,11 @@ namespace AplicacionSOA
         
         //Funcion que permite editar datos de un usuario de BuscaPoint
         [OperationContract]
-        String Editar_usuario(int codigo, String nombres, String apellidos, String email, String usuario, String clave, String telefono, Boolean sexo, int codDist, int codProv, int codDpto);                      
+        String Editar_usuario(int codigo, String nombres, String apellidos, String email, String usuario, String clave, String telefono, Boolean sexo, int codDist, int codProv, int codDpto);
+
+        //Funcion que lista los distritos de un departamento
+        [OperationContract]
+        String Listar_Distrito(int idDpto);                      
     }
 
 }

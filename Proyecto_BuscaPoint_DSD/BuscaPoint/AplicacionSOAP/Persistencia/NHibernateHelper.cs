@@ -5,7 +5,7 @@ using System.Web;
 using NHibernate;
 using NHibernate.Cfg;
 
-namespace AplicacionSOAP.Persistencia
+namespace AplicacionSOA.Persistencia
 {
     public class NHibernateHelper
     {

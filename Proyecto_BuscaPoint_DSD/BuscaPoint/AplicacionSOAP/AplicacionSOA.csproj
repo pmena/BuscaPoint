@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AplicacionSOAP</RootNamespace>
-    <AssemblyName>AplicacionSOAP</AssemblyName>
+    <RootNamespace>AplicacionSOA</RootNamespace>
+    <AssemblyName>AplicacionSOA</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
@@ -58,7 +58,8 @@
   <ItemGroup>
     <Content Include="AplicacionMVC.csproj" />
     <Content Include="Comentarios.svc" />
-    <Content Include="Dominio\Usuario.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Usuario.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Distrito.hbm.xml" />
     <Content Include="Empresas.svc" />
     <Content Include="Puntuaciones.svc" />
     <Content Include="Usuarios.svc" />
@@ -72,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dominio\Comentario.cs" />
+    <Compile Include="Dominio\Distrito.cs" />
     <Compile Include="Dominio\Empresa.cs" />
     <Compile Include="Dominio\Puntuacion.cs" />
     <Compile Include="Dominio\Usuario.cs" />
@@ -86,6 +88,7 @@
     </Compile>
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
+    <Compile Include="Persistencia\DistritoDAO.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Persistencia\UsuarioDAO.cs" />
     <Compile Include="Puntuaciones.svc.cs">
