@@ -123,9 +123,9 @@
 		</div>
 	</div>
 
-<table width='100%' cellpadding='0' cellspacing='0' style='margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+<table width='100%' cellpadding='5' cellspacing='10' style='margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
 	<tr>
-		<td width='40%' align='center'>
+		<td width='25%' align='center' valign="top">
 			<table width='98%' height='100%'  style='border-style:solid;border-color:black;border-width:1px' bgcolor='white'>
 				<tr>
 					<td align='center' width='100%' height='65px' >
@@ -193,209 +193,63 @@
 							<tr>
 								<td width='2%'>&nbsp;</td>
 								<td colspan='2' style='font-family:"Verdana";font-size:10px;color:#000000;'>
-									<b>Discotecas</b> en Miraflores >> <b><font color='#FF6600'>20 resultados</font></b></a>
+									<b>Discotecas</b> en Miraflores >> <b><font color='#FF6600'>
+                                    Se encontraron 
+                                    <% Response.Write(TempData["Contador"]);%>
+                                     resultados</font></b></a>
 								</td>
 							</tr>
 						</table>
 					</td>
 				</tr>
+
+                <% foreach (AplicacionREST.Dominio.Empresa emp in (IEnumerable<AplicacionREST.Dominio.Empresa>)TempData["resultado"])
+                   {  %>
+
 				<tr>
 					<td align='center' width='100%' style='border-top-style:solid;border-top-color:#3333CC;border-top-width:1px;'>
 						<table cellpading='0' cellspacing='0' bgcolor='white' width='100%' class="tblResult">
 							<tr>
 								<td rowspan='5' width='40%' align='center'>
-									<a href='http://sapporo.com.pe/' data-geo-lat="41.927568" data-geo-long="-87.705201" >
+									<a href='http://sapporo.com.pe/' data-geo-lat="-12.108695914512028" data-geo-long="-77.0124864578247" >
 										<img src='/img/logo_1_disco_miraflores.jpg' border='0'>
 									</a>
 								</td>
 							</tr>
 							<tr>
 								<td style='font-family:"Verdana";font-size:12px;font-color:#3333CC;'>
-									<b>Karaoke Saporo</b>
+									<b><% Response.Write(emp.nomEmpresa); %></b>
 								</td>
 							</tr>
 							<tr>
 								<td style='font-family:"Verdana";font-size:10px;color:#787878;'>
-									<i><b>Karaoke Bar & Boxes Privados ven a Saporo y descubre tu voz</b></i>
+									<i><b>
+                                        <% Response.Write(emp.desEmpP); %>
+                                   </b></i>
 								</td>
 							</tr>
 							<tr>
 								<td style='font-family:"Verdana";font-size:10px;color:#3333CC;'>
-									<b>Discoteca y Pub</b><br>
+									<b><% Response.Write(emp.desCatServicio); %></b><br>
 								</td>
 							</tr>
 							<tr>
 								<td style='font-family:"Verdana";font-size:10px;color:#000000;'>
-									Av. Benavides 509<br>
-									Esq. con alcanfores. 3er piso<br>
-									Fiesta Hotel & Casino<br>
-									Miraflores
+                                    <% Response.Write(emp.dirEmpr); %>
 								</td>
 							</tr>
 						</table>
 					</td>
 				</tr>
-				<tr>
-					<td align='center' width='100%' style='border-top-style:solid;border-top-color:#3333CC;border-top-width:1px;'>
-						<table  cellpading='0' cellspacing='0' bgcolor='#F0F0F0' width='100%' class="tblResult">
-							<tr>
-								<td rowspan='5' width='40%' align='center' style='font-family:"Verdana";font-size:10px;color:#000000;'>
-									<a href='http://sapporo.com.pe/' data-geo-lat="41.927568" data-geo-long="-87.705201" >
-										Sin imagen
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:12px;font-color:#3333CC;'>
-									<b>Discoteca Arenas</b>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#787878;'>
-									<i><b>Discoteca caleta para trampear.. ya sabes que hacer!</b></i>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#3333CC;'>
-									<b>Discoteca y Pub</b><br>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#000000;'>
-									Av. Benavides 612<br>
-									Miraflores
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td align='center' width='100%' style='border-top-style:solid;border-top-color:#3333CC;border-top-width:1px;'>
-						<table cellpading='0' cellspacing='0' bgcolor='white' width='100%' class="tblResult">
-							<tr>
-								<td rowspan='5' width='40%' align='center' style='font-family:"Verdana";font-size:10px;color:#000000;'>
-									<a href='http://sapporo.com.pe/' data-geo-lat="41.921735" data-geo-long="-87.664688" >
-										<img src='/img/logo_3_disco_miraflores.jpg' border='0'>
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:12px;font-color:#3333CC;'>
-									<b>Haus Karaoke Bar & Boxes</b>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#787878;'>
-									<i><b>Bar & Boxes</b></i>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#3333CC;'>
-									<b>Discoteca y Pub</b><br>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#000000;'>
-									Av. José Pardo 534<br>
-									Miraflores
-								</td>
-							</tr>
-						</table>
-					</td>
-				<tr>
-					<td align='center' width='100%' style='border-top-style:solid;border-top-color:#3333CC;border-top-width:1px;'>
-						<table cellpading='0' cellspacing='0' bgcolor='white' width='100%' class="tblResult">
-							<tr>
-								<td rowspan='5' width='40%' align='center' style='font-family:"Verdana";font-size:10px;color:#000000;'>
-									<a href='http://sapporo.com.pe/' data-geo-lat="41.927118" data-geo-long="-87.697621" >
-										sin imagen
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:12px;font-color:#3333CC;'>
-									<b>Cohiba Club</b>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#787878;'>
-									<i><b>Espectáculos en vivo - Música Cubana</b></i>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#3333CC;'>
-									<b>Discoteca y Pub</b><br>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#000000;'>
-									Av. Del ejército 453<br>
-									Miraflores
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td align='center' width='100%' style='border-top-style:solid;border-top-color:#3333CC;border-top-width:1px;'>
-						<table cellpading='0' cellspacing='0' bgcolor='white' width='100%' >
-							<tr>
-								<td rowspan='5' width='40%' align='center' style='font-family:"Verdana";font-size:10px;color:#000000;'>
-									<a href='http://sapporo.com.pe/' data-geo-lat="41.9786" data-geo-long="-87.9047" >
-										sin imagen
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:12px;font-color:#3333CC;'>
-									<b>Disco XYZ</b>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#787878;'>
-									<i><b>Espectáculos en vivo - Música Afroamericana</b></i>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#3333CC;'>
-									<b>Discoteca y Pub</b><br>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#000000;'>
-									Av. Del ejército 773<br>
-									Miraflores
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
+
+                <% } %>
+				
 			</table>
 
             
 		</td>
-		<td width='60%' align='right'>
-			<table width='800px' height='100%' style='border-style:solid;border-color:black;border-width:1px' bgcolor='white'>
-				<tr>
-					<td>
-						<img src='/img/busqueda_map_hotels.jpg'>
-					</td>
-				</tr>
-
-                <tr>
-                    <td>
-                         <div id="map_canvas"></div>
-     
-     <div id="more-info"><div>
-     
-        <h2>More Info</h2>
-        <p>Hover over location on the left. (JavaScript must be enabled)</p>
-     
-     </div></div>
-
-                    </td>
-                </tr>
-			</table>
+		<td width='80%' align='right' valign="middle">
+        <div id="map_canvas" style="width:100%;min-height:700px;height:100%; border:5px solid white"></div>
 		</td>
 	</table>
 

@@ -1,6 +1,10 @@
 ﻿$(function () {
 
-    var chicago = new google.maps.LatLng(41.924832, -87.697456),
+    //var chicago = new google.maps.LatLng(41.924832, -87.697456),
+    ///-12.108695914512028,-77.0124864578247
+    var chicago = new google.maps.LatLng(-12.108695914512028, -77.0124864578247),
+
+    
           pointToMoveTo,
           first = true,
           curMarker = new google.maps.Marker({}),
