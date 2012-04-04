@@ -11,6 +11,8 @@ namespace AplicacionREST.Dominio
     public class Empresa
     {
         [DataMember]
+        public string codEmpresa { get; set; }
+        [DataMember]
         public string codDpto { get; set; }
         [DataMember]
         public string codProv { get; set; }
