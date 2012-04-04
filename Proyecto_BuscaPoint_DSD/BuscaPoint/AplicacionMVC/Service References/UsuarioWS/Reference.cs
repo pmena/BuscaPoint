@@ -9,221 +9,14 @@
 //------------------------------------------------------------------------------
 
 namespace AplicacionMVC.UsuarioWS {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Usuario", Namespace="http://schemas.datacontract.org/2004/07/AplicacionSOAP.Dominio")]
-    [System.SerializableAttribute()]
-    public partial class Usuario : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string apellidoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string claveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string correoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int edadField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idDistritoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idDptoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string idUsuarioField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nombreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int sexoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string telefonoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string usuarioField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string apellido {
-            get {
-                return this.apellidoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.apellidoField, value) != true)) {
-                    this.apellidoField = value;
-                    this.RaisePropertyChanged("apellido");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string clave {
-            get {
-                return this.claveField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.claveField, value) != true)) {
-                    this.claveField = value;
-                    this.RaisePropertyChanged("clave");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string correo {
-            get {
-                return this.correoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.correoField, value) != true)) {
-                    this.correoField = value;
-                    this.RaisePropertyChanged("correo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int edad {
-            get {
-                return this.edadField;
-            }
-            set {
-                if ((this.edadField.Equals(value) != true)) {
-                    this.edadField = value;
-                    this.RaisePropertyChanged("edad");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int idDistrito {
-            get {
-                return this.idDistritoField;
-            }
-            set {
-                if ((this.idDistritoField.Equals(value) != true)) {
-                    this.idDistritoField = value;
-                    this.RaisePropertyChanged("idDistrito");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int idDpto {
-            get {
-                return this.idDptoField;
-            }
-            set {
-                if ((this.idDptoField.Equals(value) != true)) {
-                    this.idDptoField = value;
-                    this.RaisePropertyChanged("idDpto");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string idUsuario {
-            get {
-                return this.idUsuarioField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.idUsuarioField, value) != true)) {
-                    this.idUsuarioField = value;
-                    this.RaisePropertyChanged("idUsuario");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string nombre {
-            get {
-                return this.nombreField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.nombreField, value) != true)) {
-                    this.nombreField = value;
-                    this.RaisePropertyChanged("nombre");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int sexo {
-            get {
-                return this.sexoField;
-            }
-            set {
-                if ((this.sexoField.Equals(value) != true)) {
-                    this.sexoField = value;
-                    this.RaisePropertyChanged("sexo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string telefono {
-            get {
-                return this.telefonoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.telefonoField, value) != true)) {
-                    this.telefonoField = value;
-                    this.RaisePropertyChanged("telefono");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string usuario {
-            get {
-                return this.usuarioField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.usuarioField, value) != true)) {
-                    this.usuarioField = value;
-                    this.RaisePropertyChanged("usuario");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UsuarioWS.IService_Usuarios")]
     public interface IService_Usuarios {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService_Usuarios/Ingresar_usuario", ReplyAction="http://tempuri.org/IService_Usuarios/Ingresar_usuarioResponse")]
-        AplicacionMVC.UsuarioWS.Usuario Ingresar_usuario(string nombre, string apellido, string usuario, string clave, string telefono, string correo, int edad, int sexo, int codDist, int codProv, int codDpto);
+        string Ingresar_usuario(string nombre, string apellido, string usuario, string clave, string telefono, string correo, int edad, int sexo, int codDist, int codDpto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService_Usuarios/Login_usuario", ReplyAction="http://tempuri.org/IService_Usuarios/Login_usuarioResponse")]
         string Login_usuario(string usuario, string clave);
@@ -262,8 +55,8 @@ namespace AplicacionMVC.UsuarioWS {
                 base(binding, remoteAddress) {
         }
         
-        public AplicacionMVC.UsuarioWS.Usuario Ingresar_usuario(string nombre, string apellido, string usuario, string clave, string telefono, string correo, int edad, int sexo, int codDist, int codProv, int codDpto) {
-            return base.Channel.Ingresar_usuario(nombre, apellido, usuario, clave, telefono, correo, edad, sexo, codDist, codProv, codDpto);
+        public string Ingresar_usuario(string nombre, string apellido, string usuario, string clave, string telefono, string correo, int edad, int sexo, int codDist, int codDpto) {
+            return base.Channel.Ingresar_usuario(nombre, apellido, usuario, clave, telefono, correo, edad, sexo, codDist, codDpto);
         }
         
         public string Login_usuario(string usuario, string clave) {

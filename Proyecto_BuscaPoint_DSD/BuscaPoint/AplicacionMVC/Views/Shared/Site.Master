@@ -23,13 +23,19 @@
 					<td width='10%' style='font-family:"Verdana";font-size:14px;color:#3333CC;' nowrap="nowrap">
 							<b>BuscaPoint&nbsp;</b><a href='/Home/Search'><img src="/img/icon_lupa1.gif" border="0"></a>
 					</td>
-                    <td nowrap="nowrap" align="right">
-                        <div id="lblfrmLogin" style="color:#3333CC">&nbsp;</div>
+                    <td nowrap="nowrap" align="right">                        
                     </td>
-					<td width='30%' style='font-family:"Verdana";font-size:10px;color:#3333CC' nowrap="nowrap" align="right">						                        
-                        <% if (Session["Usuario"] == null)
-                           { %>                         
+					<td width='60%' style='font-family:"Verdana";font-size:10px;color:#3333CC' nowrap="nowrap" align="right">						                        
+                        <% if (Session["Usuario"] == null){ %>                         
                             <form id='frmLogin' name='frm_login' action='/Home/Login' method="POST">
+                                <%
+                                    if (Session["Usuario_fail"] != null)
+                                    {
+                                        Response.Write("<label><strong>Usuario y o contraseña incorrecta! <strong></label>");
+                                        Session["Usuario_fail"] = null;
+                                    }
+                                 %>
+                                 <label id="lblfrmLogin" style="color:#3333CC">&nbsp;</label>
 		    				    <input type='text' id='txt_login' name='txt_login' placeholder='Usuario' maxlength='50' value='' size='15'>&nbsp;
 	    					    <input type='password' id='txt_clave' name='txt_clave'  placeholder='Password' maxlength='50' value='' size='15'>&nbsp;
     						    <input type='submit' id='btn_entrar' name='btn_entrar' value='Entrar' size='15'>&nbsp;

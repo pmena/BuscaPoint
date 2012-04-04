@@ -30,15 +30,15 @@ namespace AplicacionMVC.Controllers
 
             UsuarioWS.Service_UsuariosClient ws = new UsuarioWS.Service_UsuariosClient();
             String result = ws.Login_usuario(txtUsuario, txtClave);
-
-            if (result.Equals("success"))
+            if (result.Equals("True"))
             {
                 Session["Usuario"] = txtUsuario.ToString();
-                Session["Usuario_Posicion"] = ws.Get_Position_Usuario(txtUsuario.ToString());
+                Session["Usuario_Posicion"] = ws.Get_Position_Usuario(txtUsuario.ToString());                
             }
             else
             {
                 Session["Usuario"] = null;
+                Session["Usuario_fail"] = result;
             }
 
             String path = Request.UrlReferrer.LocalPath;            
@@ -60,46 +60,38 @@ namespace AplicacionMVC.Controllers
         }
 
         public ActionResult Registrar(){
+            UsuarioWS.Service_UsuariosClient ws = new UsuarioWS.Service_UsuariosClient();
+            //String result = ws.
             return View();
         }
 
         [HttpPost]
         public ActionResult Registrar(FormCollection formCollection)
-        {            
+        {
+            String result = string.Empty;
             try
             {
                 String nombre = formCollection["txt_nombres"].ToString();
                 String apellido = formCollection["txt_apellidos"].ToString();
-                String correo = formCollection["txt_correo"].ToString();
+                String correo = formCollection["txt_email"].ToString();
                 String usuario = formCollection["txt_usr"].ToString();
                 String clave = formCollection["txt_pwd"].ToString();
+                int edad = Convert.ToInt32(formCollection["txt_edad"].ToString());
                 String telefono = string.Empty;
-                Boolean sexo = true;
-                int codDist = 0;
-                int codProv = 0;
-                int codDpto = 0;
+                int sexo = Convert.ToInt32(formCollection["rb_sexo"].ToString());
+                int codDist = Convert.ToInt32(formCollection["sel_distrito"].ToString());
+                int codDpto = 1;
 
                 UsuarioWS.Service_UsuariosClient ws = new UsuarioWS.Service_UsuariosClient();
-               // XmlNode result = ws.Ingresar_usuario(nombre, apellido, usuario, clave, correo, telefono, sexo, codDist, codProv, codDpto);
+                result = ws.Ingresar_usuario(nombre, apellido, usuario, clave, telefono, correo, edad, sexo, codDist, codDpto);
             }
-            catch { 
-            
-            
-            }
-
-            
-            //XmlNode result = ws.Ingresar_usuario(nombre,apellido,correo,usuario,clave,telefono,sexo,codDist,codProv,codDpto);
-
-            /*if
+            catch(Exception ex)
             {
-                Session["Usuario"] = txtUsuario.ToString();
-                Session["Usuario_Posicion"] = ws.Get_Position_Usuario(txtUsuario.ToString());
+                result = ex.Message.ToString();
             }
-            else
-            {
-                Session["Usuario"] = null;
-            }*/
-
+            finally {
+                Session["Register_result"] = result;
+            }  
             //String path = Request.UrlReferrer.LocalPath;            
             return View();
         }
