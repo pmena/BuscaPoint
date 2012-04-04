@@ -57,6 +57,7 @@ namespace AplicacionREST.Persistencia
                                 //Recorremos objeto por objeto y añadimos    
                                 empresa = new Empresa()
                                 {
+                                    codEmpresa = (string)resultado["codEmpresa"],        
                                     codDpto = (string)resultado["codDpto"],
                                     codProv = (string)resultado["codProv"],
                                     codDist = (string)resultado["codDist"],
