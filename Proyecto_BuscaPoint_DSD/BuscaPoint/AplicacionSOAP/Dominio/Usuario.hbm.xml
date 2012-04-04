@@ -12,10 +12,10 @@
     <property name="usuario" column="usuario" />
     <property name="clave" column="clave" />
     <property name="idDistrito" column="idDistrito" />
-    <property name="idDpto" column="idDpto" />
     <property name="edad" column="edad" />
-    <property name="sexo" column="sexo" />
     <property name="correo" column="correo" />
+    <property name="idDpto" column="idDpto" />
     <property name="telefono" column="telefono" />
+    <property name="sexo" column="sexo" />
   </class>
 </hibernate-mapping>
