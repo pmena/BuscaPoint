@@ -163,11 +163,7 @@
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
-    <None Include="Service References\UsuarioWS\Usuarios.wsdl" />
     <None Include="Service References\UsuarioWS\Usuarios1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UsuarioWS\Usuarios2.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -179,6 +175,18 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\UsuarioWS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UsuarioWS\Usuarios.wsdl" />
+    <None Include="Service References\UsuarioWS\Usuarios.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AplicacionREST\AplicacionREST.csproj">
+      <Project>{4B3B619D-6BC8-483D-9F75-BAC0F9D0C849}</Project>
+      <Name>AplicacionREST</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -195,7 +203,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>14411</DevelopmentServerPort>
+          <DevelopmentServerPort>2993</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

@@ -17,7 +17,11 @@
 <tr>
     <td align="center">
         <form method="POST" action="/Home/BuscaPoint" id="frmSearch" name="frmSearch">
+            Buscar:
             <input type="text" id="txtBusca" name="txtBusca" value="" placeholder="Escribe el lugar a buscar" style="width:60%" />
+            <br />
+             <br/>Ubigeo <%: Html.DropDownList("cmbUbigeo", (IEnumerable<SelectListItem>)TempData["Ubigeo"]) %> 
+             <br/>Categor&iacute;a <%: Html.DropDownList("cmbUbigeo", (IEnumerable<SelectListItem>)TempData["Categoria"]) %> 
             <input type="submit" value="Buscar!" style="width:100px;">
         </form>
     </td>

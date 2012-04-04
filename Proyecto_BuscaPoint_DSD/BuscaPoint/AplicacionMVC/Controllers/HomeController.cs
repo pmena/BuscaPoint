@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using System.Net;
+using System.IO;
+using AplicacionREST.Dominio;
 
 
 namespace AplicacionMVC.Controllers
@@ -10,6 +14,9 @@ namespace AplicacionMVC.Controllers
     [HandleError]
     public class HomeController : Controller
     {
+        private string alumnoRESTService = "http://localhost:2998/Ubigeos.svc/Ubigeos/2/15/01";
+        JavaScriptSerializer js = new JavaScriptSerializer();
+
         public ActionResult Index()
         {
             ViewData["Message"] = "Welcome to ASP.NET MVC!";
@@ -51,8 +58,48 @@ namespace AplicacionMVC.Controllers
             return Redirect(path);                      
         }
 
-        public ActionResult Search() {
-            return View();        
+        public ActionResult Search(){
+            List<Ubigeo> ubigeos = null;
+
+            //Cargar ubigeo
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(alumnoRESTService);
+            req.Method = "GET";
+            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+            StreamReader reader = new StreamReader(res.GetResponseStream());
+            string ubigeosJson = reader.ReadToEnd();
+            ubigeos = js.Deserialize<List<Ubigeo>>(ubigeosJson);               
+            ICollection<SelectListItem> tipos= new List<SelectListItem>();
+                
+            foreach(Ubigeo ub in ubigeos){
+               tipos.Add(new SelectListItem() { 
+                   Text=ub.descripcion.ToString(),
+                   Value = ub.codDist.ToString()
+               });
+            }
+           TempData["Ubigeo"] = tipos;
+
+           //Cargar ubigeo
+           HttpWebRequest req = (HttpWebRequest)WebRequest.Create(alumnoRESTService);
+           req.Method = "GET";
+           HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+           StreamReader reader = new StreamReader(res.GetResponseStream());
+           string ubigeosJson = reader.ReadToEnd();
+           ubigeos = js.Deserialize<List<Ubigeo>>(ubigeosJson);
+           ICollection<SelectListItem> tipos = new List<SelectListItem>();
+
+           foreach (Ubigeo ub in ubigeos)
+           {
+               tipos.Add(new SelectListItem()
+               {
+                   Text = ub.descripcion.ToString(),
+                   Value = ub.codDist.ToString()
+               });
+           }
+           TempData["Ubigeo"] = tipos;
+ 
+
+           return View(ubigeos);
+     
         }
 
         public ActionResult BuscaPoint() {            
