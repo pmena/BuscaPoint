@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using NHibernate;
 
-namespace AplicacionSOAP.Persistencia
+namespace AplicacionSOA.Persistencia
 {
     public class BaseDAO<Entidad, Id>
     {

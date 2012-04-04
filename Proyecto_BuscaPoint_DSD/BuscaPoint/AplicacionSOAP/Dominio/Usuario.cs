@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Runtime.Serialization;
 
-namespace AplicacionSOAP.Dominio
+namespace AplicacionSOA.Dominio
 {
     [DataContract]
     public class Usuario

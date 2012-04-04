@@ -5,8 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using AplicacionSOAP.Persistencia;
-using AplicacionSOAP.Dominio;
+using AplicacionSOA.Persistencia;
+using AplicacionSOA.Dominio;
 
 namespace AplicacionSOA
 {
@@ -23,11 +23,22 @@ namespace AplicacionSOA
                     usuarioDAO = new UsuarioDAO();
                 return usuarioDAO;
             }
-        }        
+        }
+
+        private DistritoDAO distritoDAO = null;
+        private DistritoDAO DistritoDAO
+        {
+            get
+            {
+                if (distritoDAO == null)
+                    distritoDAO = new DistritoDAO();
+                return distritoDAO;
+            }
+        }
 
         //Funcion que permite registrar un usuario de BuscaPoint
-        public Usuario Ingresar_usuario(String nombre, String apellido, String usuario, String clave, String telefono, String correo, int edad, int sexo, int codDist, int codProv, int codDpto)
-        {/*
+        public String Ingresar_usuario(String nombre, String apellido, String usuario, String clave, String telefono, String correo, int edad, int sexo, int codDist, int codDpto)
+        {
             Usuario usuarioACrear = new Usuario()
             {
                 nombre = nombre,
@@ -35,21 +46,30 @@ namespace AplicacionSOA
                 usuario = usuario,
                 clave = clave,
                 idDistrito = codDist,
-                idDpto = codProv,
+                idDpto = codDpto,
                 edad = edad,
                 sexo = sexo,
                 telefono = telefono,
                 correo = correo                
             };
-            return UsuarioDAO.Crear(usuarioACrear);*/
-            return null;
+            if (UsuarioDAO.Crear(usuarioACrear) != null)
+            {
+                return "Felicitaciones! El usuario ha sido creado correctamente.";
+            }
+            else {
+                return "Lo sentimos, el servicio no esta disponible. Vuelva a intentarlo!";
+            }            
         }
 
-        //Funcion que permite a un usuario loguearse al sistema BuscaPoint
+        /**
+         * @abstract Funcion que permite a un usuario loguearse al sistema BuscaPoint       
+         * @param usuario Identificador de usuario
+         * @clave clave Contraseña de usuario
+         * @return String: True si el login es correcto, caso contrario false
+         */
         public string Login_usuario(String usuario, String clave)
-        {
-            //return UsuarioDAO.Login(usuario, clave).ToString();
-            return "success";
+        {            
+            return UsuarioDAO.Login(usuario, clave).ToString();      
         }
 
         //Funcion que obtiene la ubicación del usuario
@@ -65,5 +85,10 @@ namespace AplicacionSOA
             return "... Mi nombre es Hetalia!";
         }
 
+        //Funcion que permite editar datos de un usuario de BuscaPoint
+        public string Listar_Distrito(int codigo)
+        {            
+            return distritoDAO.Listar_Distrito(codigo).ToString();
+        }
     }
 }
