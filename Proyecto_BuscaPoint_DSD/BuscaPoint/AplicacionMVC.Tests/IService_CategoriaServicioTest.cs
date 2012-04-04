@@ -19,7 +19,7 @@ namespace AplicacionMVC.Tests
         public void TestMethod1()
         {
             // Prueba de consulta de listado categoria servicio via http POST
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:4598/CategoriaServicios.svc/CategoriaServicios");
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:2998/CategoriaServicios.svc/CategoriaServicios");
             req.Method = "GET";
             HttpWebResponse res = (HttpWebResponse)req.GetResponse();
             StreamReader reader = new StreamReader(res.GetResponseStream());
