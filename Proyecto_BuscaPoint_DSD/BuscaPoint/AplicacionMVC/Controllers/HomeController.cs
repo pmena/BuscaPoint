@@ -15,6 +15,9 @@ namespace AplicacionMVC.Controllers
     public class HomeController : Controller
     {
         private string alumnoRESTService = "http://localhost:2998/Ubigeos.svc/Ubigeos/2/15/01";
+        private string categoriaRESTService = "http://localhost:2998/CategoriaServicios.svc/CategoriaServicios";
+        private string busquedaRESTService = "http://localhost:2998/Empresas.svc/Empresas/1/15/01/22/03/karaoke";      
+
         JavaScriptSerializer js = new JavaScriptSerializer();
 
         public ActionResult Index()
@@ -60,6 +63,7 @@ namespace AplicacionMVC.Controllers
 
         public ActionResult Search(){
             List<Ubigeo> ubigeos = null;
+            List<CategoriaServicio> categorias = null;
 
             //Cargar ubigeo
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(alumnoRESTService);
@@ -78,31 +82,71 @@ namespace AplicacionMVC.Controllers
             }
            TempData["Ubigeo"] = tipos;
 
-           //Cargar ubigeo
-           HttpWebRequest req = (HttpWebRequest)WebRequest.Create(alumnoRESTService);
+           //Cargar Categoria
+           req = (HttpWebRequest)WebRequest.Create(categoriaRESTService);
            req.Method = "GET";
-           HttpWebResponse res = (HttpWebResponse)req.GetResponse();
-           StreamReader reader = new StreamReader(res.GetResponseStream());
-           string ubigeosJson = reader.ReadToEnd();
-           ubigeos = js.Deserialize<List<Ubigeo>>(ubigeosJson);
-           ICollection<SelectListItem> tipos = new List<SelectListItem>();
+           res = (HttpWebResponse)req.GetResponse();
+           reader = new StreamReader(res.GetResponseStream());
+           string categoriasJson = reader.ReadToEnd();
+           categorias = js.Deserialize<List<CategoriaServicio>>(categoriasJson);
+           ICollection<SelectListItem>  tiposCategorias= new List<SelectListItem>();
 
-           foreach (Ubigeo ub in ubigeos)
-           {
-               tipos.Add(new SelectListItem()
+           foreach(CategoriaServicio cat in categorias){
+               try
                {
-                   Text = ub.descripcion.ToString(),
-                   Value = ub.codDist.ToString()
-               });
+                   tiposCategorias.Add(new SelectListItem()
+                   {
+                       Text = cat.nomCatServ,
+                       Value = cat.codCatServ
+                   });
+               }
+               catch {
+               }
            }
-           TempData["Ubigeo"] = tipos;
- 
-
+           TempData["Categoria"] = tiposCategorias;
            return View(ubigeos);
      
         }
 
-        public ActionResult BuscaPoint() {            
+        public ActionResult BuscaPoint()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult BuscaPoint(FormCollection formCollection)
+        {
+            String ubigeo = string.Empty;
+            String categoria = string.Empty;
+            String nombre = string.Empty;
+            try
+            {
+                 ubigeo = Convert.ToInt32(formCollection["cmbUbigeo"]).ToString();
+                 categoria = formCollection["cmbCategoria"].ToString();
+                 nombre = formCollection["txtBusca"].ToString();
+            }
+            catch { 
+                
+            }            
+
+            String url = "http://localhost:2998/Empresas.svc/Empresas/"+ubigeo+"/15/"+categoria+"/22/03/"+nombre; 
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+            req.Method = "GET";
+            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+            StreamReader reader = new StreamReader(res.GetResponseStream());
+            string ubigeosJson = reader.ReadToEnd();
+            List<Empresa> empresas = js.Deserialize<List<Empresa>>(ubigeosJson);
+            
+            TempData["resultado"] = empresas;
+            TempData["Categoria"] = categoria;
+            try
+            {
+                TempData["Contador"] = empresas.Count;
+            }
+            catch {
+                TempData["Contador"] = 0;
+            }
+
             return View();
         }
 
