@@ -22,14 +22,14 @@ namespace AplicacionSOA.Dominio
         [DataMember]
         public int idDistrito { get; set; }
         [DataMember]
+        public int edad { get; set; }        
+        [DataMember]
+        public string correo { get; set; }
+        [DataMember]
         public int idDpto { get; set; }
-        [DataMember]
-        public int edad { get; set; }
-        [DataMember]
-        public int sexo { get; set; }
         [DataMember]
         public string telefono { get; set; }
         [DataMember]
-        public string correo { get; set; }
+        public int sexo { get; set; }
     }
 }
