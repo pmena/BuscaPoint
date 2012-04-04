@@ -90,10 +90,6 @@
       <Project>{4B3B619D-6BC8-483D-9F75-BAC0F9D0C849}</Project>
       <Name>AplicacionREST</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AplicacionSOAP\AplicacionSOAP.csproj">
-      <Project>{4309A09D-A498-44D9-BB21-EE2D44D82E27}</Project>
-      <Name>AplicacionSOAP</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -26,6 +26,9 @@ namespace AplicacionMVC.UsuarioWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService_Usuarios/Editar_usuario", ReplyAction="http://tempuri.org/IService_Usuarios/Editar_usuarioResponse")]
         string Editar_usuario(int codigo, string nombres, string apellidos, string email, string usuario, string clave, string telefono, bool sexo, int codDist, int codProv, int codDpto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService_Usuarios/Listar_Distrito", ReplyAction="http://tempuri.org/IService_Usuarios/Listar_DistritoResponse")]
+        string Listar_Distrito(int idDpto);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -69,6 +72,10 @@ namespace AplicacionMVC.UsuarioWS {
         
         public string Editar_usuario(int codigo, string nombres, string apellidos, string email, string usuario, string clave, string telefono, bool sexo, int codDist, int codProv, int codDpto) {
             return base.Channel.Editar_usuario(codigo, nombres, apellidos, email, usuario, clave, telefono, sexo, codDist, codProv, codDpto);
+        }
+        
+        public string Listar_Distrito(int idDpto) {
+            return base.Channel.Listar_Distrito(idDpto);
         }
     }
 }
