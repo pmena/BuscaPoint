@@ -18,8 +18,8 @@ namespace AplicacionREST.Persistencia
             Empresa empresa = null;
             string sql = "";
 
-            if (tipoEmpresa.Equals("0")) sql = "select * from dbo.tbl_empresa where codDpto = @codDpto and codProv = @codProv and codDist = @codDist and codCatServicio = @codCatServ";
-            if (tipoEmpresa.Equals("1")) sql = "select * from dbo.tbl_empresa where nomEmpresa LIKE '%' + @nomEmp + '%' ";
+            if (tipoEmpresa.Equals("0")) sql = "select * from dbo.tbl_empresa emp inner join dbo.tbl_cat_servicio catServ on catServ.codCatServ = emp.codCatServicio where codDpto = @codDpto and codProv = @codProv and codDist = @codDist and codCatServicio = @codCatServ";
+            if (tipoEmpresa.Equals("1")) sql = "select * from dbo.tbl_empresa emp inner join dbo.tbl_cat_servicio catServ on catServ.codCatServ = emp.codCatServicio where nomEmpresa LIKE '%' + @nomEmp + '%' ";
             if (tipoEmpresa.Equals("2")) sql = "select top 3 * from dbo.tbl_empresa where codCatServicio = @codCatServ order by fecIngreso desc, horIngreso desc";
 
             Debug.WriteLine("sql: " + sql);
@@ -61,8 +61,8 @@ namespace AplicacionREST.Persistencia
                                     codDpto = (string)resultado["codDpto"],
                                     codProv = (string)resultado["codProv"],
                                     codDist = (string)resultado["codDist"],
-                                    codCatServicio = (string)resultado["codCatServicio"],
-                                    //nomCatS = (string)resultado[""],
+                                    codCatServicio = (string)resultado["codCatServicio"],                                    
+                                    desCatServicio = (string)resultado["nomCatServ"],
                                     nomEmpresa = (string)resultado["nomEmpresa"],
                                     desEmpP = (string)resultado["desEmpresaPeq"],
                                     desEmpG = (string)resultado["desEmpresaGen"],
