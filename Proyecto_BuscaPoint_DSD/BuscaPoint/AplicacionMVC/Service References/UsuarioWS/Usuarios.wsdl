@@ -4,6 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:3198/Usuarios.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:3198/Usuarios.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:3198/Usuarios.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AplicacionSOA.Dominio" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService_Usuarios_Ingresar_usuario_InputMessage">
@@ -18,11 +19,11 @@
   <wsdl:message name="IService_Usuarios_Login_usuario_OutputMessage">
     <wsdl:part name="parameters" element="tns:Login_usuarioResponse" />
   </wsdl:message>
-  <wsdl:message name="IService_Usuarios_Get_Position_Usuario_InputMessage">
-    <wsdl:part name="parameters" element="tns:Get_Position_Usuario" />
+  <wsdl:message name="IService_Usuarios_Obtener_Usuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:Obtener_Usuario" />
   </wsdl:message>
-  <wsdl:message name="IService_Usuarios_Get_Position_Usuario_OutputMessage">
-    <wsdl:part name="parameters" element="tns:Get_Position_UsuarioResponse" />
+  <wsdl:message name="IService_Usuarios_Obtener_Usuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Obtener_UsuarioResponse" />
   </wsdl:message>
   <wsdl:message name="IService_Usuarios_Editar_usuario_InputMessage">
     <wsdl:part name="parameters" element="tns:Editar_usuario" />
@@ -45,9 +46,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService_Usuarios/Login_usuario" message="tns:IService_Usuarios_Login_usuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService_Usuarios/Login_usuarioResponse" message="tns:IService_Usuarios_Login_usuario_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="Get_Position_Usuario">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService_Usuarios/Get_Position_Usuario" message="tns:IService_Usuarios_Get_Position_Usuario_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService_Usuarios/Get_Position_UsuarioResponse" message="tns:IService_Usuarios_Get_Position_Usuario_OutputMessage" />
+    <wsdl:operation name="Obtener_Usuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService_Usuarios/Obtener_Usuario" message="tns:IService_Usuarios_Obtener_Usuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService_Usuarios/Obtener_UsuarioResponse" message="tns:IService_Usuarios_Obtener_Usuario_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Editar_usuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IService_Usuarios/Editar_usuario" message="tns:IService_Usuarios_Editar_usuario_InputMessage" />
@@ -78,8 +79,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Get_Position_Usuario">
-      <soap:operation soapAction="http://tempuri.org/IService_Usuarios/Get_Position_Usuario" style="document" />
+    <wsdl:operation name="Obtener_Usuario">
+      <soap:operation soapAction="http://tempuri.org/IService_Usuarios/Obtener_Usuario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

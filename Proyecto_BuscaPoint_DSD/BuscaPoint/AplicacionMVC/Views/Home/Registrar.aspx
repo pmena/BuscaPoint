@@ -54,12 +54,24 @@
 								&nbsp;
 							</td>
 							<td colspan='3' style='font-family:Verdana;font-size:14px;color:#3333CC;'>
-                                <% if ((Session["Register_result"] != null) && (Session["Register_result_status"] != "fail"))
+                                <% if ((Session["Register_result"] != null) && (Session["Register_result_status"].ToString() != "error") && (Session["Register_result_status"].ToString() != "fail"))
                                    {  %>
-                                        <b><font color='green'><% Response.Write(Session["Register_result"].ToString()); %></font></b>    
-                                        <br /><br />
+                                        <div class="alert alert-success">
+                                            <h4 class="alert-heading">Felicitaciones!</h4>
+                                            <a class="close" data-dismiss="alert">×</a>
+                                            <% Response.Write(Session["Register_result"].ToString()); %>                                        
+                                        </div>
                                 <%      Session["Register_result"] = null;
-                                   } else if ((Session["Register_result"] != null) && (Session["Register_result_status"] == "fail")){ %>
+                                        Session["Register_result_status"] = null;
+                                   } else if ((Session["Register_result"] != null) && (Session["Register_result_status"] == "error")){ %>
+                                       <div class="alert alert-error">
+                                            <h4 class="alert-heading">Advertencia!</h4>
+                                            <a class="close" data-dismiss="alert">×</a>
+                                            <% Response.Write(Session["Register_result"].ToString()); %>
+                                        </div>                                   
+                                 <%     Session["Register_result"] = null;
+                                        Session["Register_result_status"] = null;
+                                     } else if ((Session["Register_result"] != null) && (Session["Register_result_status"] == "fail")){ %>
                                        <div class="alert alert-error">
                                             <h4 class="alert-heading">Wtf!</h4>
                                             <a class="close" data-dismiss="alert">×</a>
@@ -89,8 +101,8 @@
                                 <strong>Nombres y Apellidos</strong>
                             </td>
                             <td>
-                                <input type='text' id='txt_nombres' name='txt_nombres' value='' placeholder='Ingrese Nombres' size='25' style='font-family:"Verdana";font-size:10px;color:#3333CC;'/>
-								<input type='text' id='txt_apellidos' name='txt_apellidos' value='' placeholder='Ingrese Apellidos' size='25' style='font-family:"Verdana";font-size:10px;color:#3333CC;'/>
+                                <input type='text' id='txt_nombres' name='txt_nombres' value='<% Response.Write(TempData["nombre"].ToString()); %>' placeholder='Ingrese Nombres' size='25' style='font-family:"Verdana";font-size:10px;color:#3333CC;'/>
+								<input type='text' id='txt_apellidos' name='txt_apellidos' value='<% Response.Write(TempData["apellido"].ToString()); %>' placeholder='Ingrese Apellidos' size='25' style='font-family:"Verdana";font-size:10px;color:#3333CC;'/>
                             </td>
 							<td>
                             </td>
@@ -103,7 +115,7 @@
                                 <strong>Edad</strong>
                             </td>
 							<td height='30px' width='48%' style='font-family:"Verdana";font-size:14px;color:#3333CC;'>
-								<input type='text' id='txt_edad' name='txt_edad' value='' placeholder='Ingrese su edad' maxlength="3" size='40' style='font-family:"Verdana";font-size:10px;color:#3333CC;'>&nbsp;
+								<input type='text' id='txt_edad' name='txt_edad' value='<% Response.Write(TempData["edad"].ToString()); %>' placeholder='Ingrese su edad' maxlength="3" size='40' style='font-family:"Verdana";font-size:10px;color:#3333CC;'>&nbsp;
 							</td>
 <td>
                             </td>
@@ -116,7 +128,7 @@
                                 <strong>Correo electrónico</strong>
                             </td>
 							<td height='30px' width='48%' style='font-family:"Verdana";font-size:14px;color:#3333CC;'>
-								<input type='text' id='txt_email' name='txt_email' value='' placeholder='Ingrese Correo electrónico' size='40' style='font-family:"Verdana";font-size:10px;color:#3333CC;'>&nbsp;
+								<input type='text' id='txt_email' name='txt_email' value='<% Response.Write(TempData["correo"].ToString()); %>' placeholder='Ingrese Correo electrónico' size='40' style='font-family:"Verdana";font-size:10px;color:#3333CC;'>&nbsp;
 							</td>
 							<td>
                             </td>
@@ -129,7 +141,7 @@
 								<strong>Teléfono</strong>
 							</td>
 							<td height='30px' width='48%' style='font-family:"Verdana";font-size:14px;color:#3333CC;'>
-								<input type='text' id='txt_telefono' placeholder='Ingrese teléfono' name='txt_telefono' value='' size='25' style='font-family:"Verdana";font-size:10px;color:#3333CC;'>&nbsp;
+								<input type='text' id='txt_telefono' placeholder='Ingrese teléfono' name='txt_telefono' value='<% Response.Write(TempData["telefono"].ToString()); %>' size='25' style='font-family:"Verdana";font-size:10px;color:#3333CC;'>&nbsp;
 							</td>
 <td>
                             </td>
@@ -142,7 +154,7 @@
                                 <strong>Usuario</strong>
                             </td>
 							<td height='30px' width='48%' style='font-family:"Verdana";font-size:14px;color:#3333CC;'>
-								<input type='text' id='txt_usr' name='txt_usr' value='' placeholder='Ingrese Usuario' size='25' style='font-family:"Verdana";font-size:10px;color:#3333CC;' />&nbsp;
+								<input type='text' id='txt_usr' name='txt_usr' value='<% Response.Write(TempData["usuario"].ToString()); %>' placeholder='Ingrese Usuario' size='25' style='font-family:"Verdana";font-size:10px;color:#3333CC;' />&nbsp;
 							</td>
 <td>
                             </td>
@@ -196,8 +208,10 @@
 								<b>Ubicación inicial</b>
 							</td>
                             <td height='30px' width='50%' >
-	    						<select name="sel_distrito" id="sel_distrito" style='font-family:"Verdana";font-size:10px;color:#3333CC;' />                          
-								</select>
+                                <% if (TempData["Ubigeo"]!=null)
+                                   { %>
+                                 <%: Html.DropDownList("sel_distrito", (IEnumerable<SelectListItem>)TempData["Ubigeo"])%> 
+                                 <% } %>
                                 &nbsp;<img valign="bottom" style="display:none" src="/img/ico_ayuda.gif" alt="Esta es tu ubicación por defecto para búsqueda de establecimientos"></img>
 							</td>
 <td>

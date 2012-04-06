@@ -66,5 +66,49 @@ namespace AplicacionREST.Persistencia
             return listadoUbigeo;
         }
 
+        //Obtiene el datos de un distrito
+        public String ObtenerUbigeo(string codDpto, string codDistrito, string codProv)
+        {
+
+            List<Ubigeo> listadoUbigeo = null;
+            Ubigeo ubigeo = null;
+            string sql = "";
+            sql = "select * from dbo.tbl_ubigeo where codDist <> '00' and codDist= @codDistrito and codDpto= @codDpto and codProv = @codProv";
+
+            using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand(sql, con))
+                {                    
+                    com.Parameters.Add(new SqlParameter("@codDpto", codDpto));
+                    com.Parameters.Add(new SqlParameter("@codDistrito", codProv));
+                    com.Parameters.Add(new SqlParameter("@codProv", codProv));
+                  
+                    using (SqlDataReader resultado = com.ExecuteReader())
+                    {
+                        if (resultado.HasRows)
+                        {
+                            while (resultado.Read())
+                            {
+                                //Recorremos objeto por objeto y añadimos    
+                                ubigeo = new Ubigeo()
+                                {
+                                    codDpto = (string)resultado["codDpto"],
+                                    codProv = (string)resultado["codProv"],
+                                    codDist = (string)resultado["codDist"],
+                                    descripcion = (string)resultado["descripcion"]
+                                };
+                            }
+                        }
+                        else
+                        {
+                            Debug.WriteLine("No retornó registros");
+                        }
+                    }
+                }
+            }
+            return ubigeo.descripcion;
+        }
+
     }
 }

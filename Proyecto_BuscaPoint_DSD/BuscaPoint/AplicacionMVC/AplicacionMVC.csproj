@@ -131,6 +131,7 @@
     <Content Include="img\like-fb.png" />
     <Content Include="img\Lima-rolls.jpg" />
     <Content Include="img\logo-la-mar.gif" />
+    <Content Include="img\logout.png" />
     <Content Include="img\logo_1_disco_miraflores.JPG" />
     <Content Include="img\logo_3_disco_miraflores.JPG" />
     <Content Include="img\marker.png" />
@@ -153,6 +154,9 @@
     <Content Include="Scripts\registrar.js" />
     <Content Include="Scripts\search.js" />
     <Content Include="Scripts\index.js" />
+    <None Include="Service References\UsuarioWS\AplicacionMVC.UsuarioWS.Usuario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\UsuarioWS\Usuarios.disco" />
     <None Include="Service References\UsuarioWS\configuration91.svcinfo" />
     <None Include="Service References\UsuarioWS\configuration.svcinfo" />
@@ -198,12 +202,21 @@
     <None Include="Service References\UsuarioWS\Usuarios1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\UsuarioWS\Usuarios2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AplicacionREST\AplicacionREST.csproj">
+      <Project>{4B3B619D-6BC8-483D-9F75-BAC0F9D0C849}</Project>
+      <Name>AplicacionREST</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\UsuarioWS\" />
@@ -213,12 +226,6 @@
     <None Include="Service References\UsuarioWS\Usuarios.xsd">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AplicacionREST\AplicacionREST.csproj">
-      <Project>{4B3B619D-6BC8-483D-9F75-BAC0F9D0C849}</Project>
-      <Name>AplicacionREST</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

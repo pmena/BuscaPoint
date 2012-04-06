@@ -20,19 +20,32 @@ $(document).ready(function () {
             txtUsuario.css("border", "2px solid #FF0000");
             txtUsuario.css("color", "#FF0000");
             txtUsuario.focus();
+            $("#lblfrmLogin").css("display", "");
             $("#lblfrmLogin").html("Corrija sus datos! &nbsp;");
+            $("#lblfrmLogin").css("display", "inline");
         }
 
         if (valTxtPassword == "") {
             txtPassword.css("border", "2px solid red");
             txtPassword.css("color", "#FF0000");
             txtPassword.focus();
+            $("#lblfrmLogin").css("display", "");
             $("#lblfrmLogin").html("Corrija sus datos! &nbsp;");
+            $("#lblfrmLogin").css("display", "inline");
         }
 
         if ((valTxtUsuario != "") && (valTxtPassword != "")) {
+            $("#lblfrmLogin").css("display", "none");
             return true;
         }
+
+        if ($("#lblAuth").length > 0) {
+            $("#lblAuth").html("");
+            $("#lblAuth").remove();
+        }
+
+        $("#lblfrmLogin").parent().find("strong").remove();
+        //alert($("#lblfrmLogin").parent().html());
         return false;
     });
 });

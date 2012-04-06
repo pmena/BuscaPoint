@@ -20,5 +20,10 @@ namespace AplicacionREST
             return dao.ObtenerListado(tipoUbigeo, codDpto, codProv);
         }
 
+        public String ObtenerUbigeo(string codDpto, string codDistrito, string codProv)
+        {
+            return dao.ObtenerUbigeo(codDpto, codDpto, codProv);
+        }
+
     }
 }
