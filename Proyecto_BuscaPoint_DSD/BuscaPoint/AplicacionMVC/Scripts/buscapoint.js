@@ -1,76 +1,69 @@
-﻿$(function () {
+﻿
+$(document).ready(function () {
 
-    //var chicago = new google.maps.LatLng(41.924832, -87.697456),
-    ///-12.108695914512028,-77.0124864578247
-    var chicago = new google.maps.LatLng(-12.108695914512028, -77.0124864578247),
+    function goDestination(GoogleAlt, GoogleLat, zoo) {
+        var latlng = new google.maps.LatLng(GoogleAlt, GoogleLat);
+        var myOptions = {
+            zoom: zoo,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("map_canvas"),
+        myOptions);
+    }
 
-    
-          pointToMoveTo,
-          first = true,
-          curMarker = new google.maps.Marker({}),
-          $el;
+    var links = $(".result_business");
 
-    var myOptions = {
-        zoom: 10,
-        center: chicago,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+    links.click(function () {
 
-    var map = new google.maps.Map($("#map_canvas")[0], myOptions);
-
-    //$("#locations li").mouseenter(function () {
-    $(".tblResult").mouseenter(function () {
-        //alert($(this).find("tbody").find("tr:first").find("a").attr("data-geo-lat"));
-
-        //$el = $(this);
-        $el = $(this).find("tbody").find("tr:first").find("a");
-
-        if (!$el.hasClass("hover")) {
-
-            //$("#locations li").removeClass("hover");
-            $(".tblResult").removeClass("hover");
-            $el.addClass("hover");
-
-            if (!first) {
-
-                // Clear current marker
-                curMarker.setMap();
-
-                // Set zoom back to Chicago level
-                // map.setZoom(10);
-            }
-
-            // Move (pan) map to new location
-            pointToMoveTo = new google.maps.LatLng($el.attr("data-geo-lat"), $el.attr("data-geo-long"));
-            map.panTo(pointToMoveTo);
-
-            // Add new marker
-            curMarker = new google.maps.Marker({
-                position: pointToMoveTo,
-                map: map,
-                icon: "/img/marker.png"
-            });
-
-            // On click, zoom map
-            google.maps.event.addListener(curMarker, 'click', function () {
-                map.setZoom(14);
-            });
-
-            // Fill more info area
-            $("#more-info")
-            .find("h2")
-              .html($el.find("h3").html())
-              .end()
-            .find("p")
-              .html($el.find(".longdesc").html());
-
-            // No longer the first time through (re: marker clearing)        
-            first = false;
-        }
-
+        var enlace = $(this).find("table tbody tr:first").find("a");
+        var gAlt = enlace.attr("data-geo-long");
+        var gLat = enlace.attr("data-geo-lat");
+        goDestination(gLat, gAlt, 16);
     });
 
-    //$("#location li:first").trigger("mouseenter");
-    $(".tblResult :first").trigger("mouseenter");
+    links.hover(function () {
+        $(this).addClass("cHover");
+    }, function () {
+        $(this).removeClass("cHover");
+    });
 
+    $(".tblResult").hover(function () {
+        $(this).addClass("cHover");
+    }, function () {
+        $(this).removeClass("cHover");
+    });
+
+    if (links.length > 0) {
+        var padre = $(".tblResult");
+        var nomEmpr = "";
+        var descEmpr = "";
+
+        nomEmpr = padre.find("tbody:first").find("tr:first").next(":first").find("td:first").text();
+        dirEmpr = padre.find("tbody:first").find("tr:first").next().next().next().next().text();
+        padre.parent().parent().parent().find("tr:first").click();        
+        descEmpr = "";
+
+        var lbl = $("#buscaPointLbl");
+        lbl.removeClass();
+        lbl.addClass("alert alert-info");
+        lbl.html(" <strong>Empresa " + nomEmpr + "</strong>: Ubicación <span style='color:black;padding-right:5px;font-size:12px;font-weight:500;padding-top:3px;padding-bottom:1px;padding-left:2px;border:1px solid #bbb;background-color:white'>" + dirEmpr + "</span> ");
+        lbl.append("<a class='close' data-dismiss='alert'>×</a>");
+
+    } else {
+        //Error no hay resultados,  mandarlo a una isla perdida
+        goDestination(5.152418, 163.010276, 9);
+        var lbl = $("#buscaPointLbl");
+        lbl.removeClass();
+        lbl.addClass("alert alert-error");
+        lbl.html(" <strong>Oh my Good!</strong> Lo sentimos, el servicio que busca se encuentra en algún lugar del planeta. Cambie algunos términos e intentélo nuevamente...");
+        lbl.append("<a class='close' data-dismiss='alert'>×</a>");
+    }
+
+    $(".close").click(function () {
+        $(this).parent().remove();
+    });
+    $(".basic").jRating();
 });
+
+
