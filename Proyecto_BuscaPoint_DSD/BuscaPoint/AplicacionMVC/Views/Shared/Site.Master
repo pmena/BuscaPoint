@@ -4,42 +4,47 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>    .:: BuscaPoint - Todos los sitios que necesites y más ::.</title>      
+    <link href="/Content/Bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
     <script src="/Scripts/jquery.js" type="text/javascript" language="javascript"></script>
+    <script src="/Scripts/jRating.jquery.js" type="text/javascript" language="javascript"></script>
     <script src="/Scripts/index.js" type="text/javascript" language="javascript"></script>
 </head>
 
-<body style='margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;' bgcolor='#FFCC33'>
-    <div class="login">
-        <table style="width:100%;background-color:#FF6600;line-height:300%" cellpadding='0' cellspacing='0' border="0">
+<body>   
+        <table cellpadding='0' cellspacing='0' border="0" id="header">
 				<tr>
-					<td width='5%' style='font-family:"Verdana";font-size:10px;color:#3333CC' nowrap="nowrap">
-						&nbsp;
-					</td>
-                    <td width='5%' style='font-family:"Verdana";font-size:14px;color:#3333CC;' nowrap="nowrap">
-							<a href='/'><strong>INICIO</strong></a>
-					</td>
-					<td width='10%' style='font-family:"Verdana";font-size:14px;color:#3333CC;' nowrap="nowrap">
-							<b>BuscaPoint&nbsp;</b><a href='/Home/Search'><img src="/img/icon_lupa1.gif" border="0"></a>
-					</td>
-                    <td nowrap="nowrap" align="right">                        
+                    <td width="2%">
+                        &nbsp;
                     </td>
-					<td width='60%' style='font-family:"Verdana";font-size:10px;color:#3333CC' nowrap="nowrap" align="right">						                        
-                        <% if (Session["Usuario"] == null){ %>                         
-                            <form id='frmLogin' name='frm_login' action='/Home/Login' method="POST">
-                                <%
+                    <td width='6%' nowrap="nowrap" align="center" valign="middle">
+							<a href='/'><img src="/img/home.png" alt="Ir a la página de inicio" />Inicio</a>
+					</td>
+					<td width='6%' nowrap="nowrap" align="center" valign="middle">
+							<a href='/Home/Search'><img src="/img/search.png" alt="Buscar Servicio!" />Buscar</a>
+					</td>
+                    <td  nowrap="nowrap" align="right">                        
+                        <% if (Session["Usuario"] == null)
+                           { %>                         
+                        <label id="lblfrmLogin" style="color:#FFFF00;font-weight:600;">&nbsp;</label>
+                                                        <%
                                     if (Session["Usuario_fail"] != null)
                                     {
                                         Response.Write("<label><strong>Usuario y o contraseña incorrecta! <strong></label>");
                                         Session["Usuario_fail"] = null;
                                     }
                                  %>
-                                 <label id="lblfrmLogin" style="color:#3333CC">&nbsp;</label>
-		    				    <input type='text' id='txt_login' name='txt_login' placeholder='Usuario' maxlength='50' value='' size='15'>&nbsp;
+                        <% } %>
+                    </td>
+					<td width='20%' nowrap="nowrap" align="right" valign="middle" >
+                        <% if (Session["Usuario"] == null){ %>                         
+                            <form id='frmLogin' name='frm_login' action='/Home/Login' method="POST">
+  		    				    <input type='text' id='txt_login' name='txt_login' placeholder='Usuario' maxlength='50' value='' size='15'>&nbsp;
 	    					    <input type='password' id='txt_clave' name='txt_clave'  placeholder='Password' maxlength='50' value='' size='15'>&nbsp;
-    						    <input type='submit' id='btn_entrar' name='btn_entrar' value='Entrar' size='15'>&nbsp;
-						        ¿No eres usuario?&nbsp;
+    						    <input type='submit' id='btn_entrar' class='btn' name='btn_entrar' value='Entrar' size='15'>&nbsp;
+						        
                             </form>
                         <% } else {  %>
                             Bienvenido 
@@ -50,28 +55,22 @@
                             &nbsp;
                         <%  } %>
                     </td>
-                    <td width='10%' style='font-family:Verdana;font-size:10px;font-color:#3333CC' nowrap="nowrap">
-                        <% if (Session["Usuario"] == null){ %>                         
-                            <form id='Form1' name='frm_login' action='/Home/Registrar' method="POST">
-						        <input type='submit' id='btn_registrar' name='btn_registrar' value='Registrate aquí' size='15' onclick='javascript:document.getElementById("frm_login").action;'>&nbsp;
-						    </form>
+                    <td width="9%" align="right" nowrap="nowrap">
+                    <% if (Session["Usuario"] == null)
+                       { %>                         
+                        <label style="color:White;">¿No eres usuario? &nbsp;</label>
+                    <% } %>                         
+                    </td>
+                    <td width="9%" nowrap="nowrap" valign="middle" align="left">
+                        <% if (Session["Usuario"] == null){ %>                                                 
+                            <a class='btn' href='/Home/Registrar' name='btn_registrar'>Registrate aquí</a>
                         <% } else {  %>
                             <a href="/Home/Logout" onclick="if(confirm('Seguro que desea cerrar sesión?')){ return true; } return false;" >Logout </a> 
                         <%  } %>                        
 					</td>
-					<td width='5%' style='font-family:"Verdana";font-size:10px;font-color:#3333CC'>
-						&nbsp;
-					</td>
 				</tr>
 			</table>
-    </div>
-    <div class="page">
-        <div id="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-
-            <div id="footer">
-            </div>
-        </div>
-    </div>
+    <br />
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />       
 </body>
 </html>

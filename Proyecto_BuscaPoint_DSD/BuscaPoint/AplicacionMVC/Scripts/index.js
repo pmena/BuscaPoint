@@ -17,17 +17,17 @@ $(document).ready(function () {
         txtPassword.css("color", "");
 
         if (valTxtUsuario == "") {
-            txtUsuario.css("border", "2px solid #3333CC");
-            txtUsuario.css("color", "#3333CC");
+            txtUsuario.css("border", "2px solid #FF0000");
+            txtUsuario.css("color", "#FF0000");
             txtUsuario.focus();
-            $("#lblfrmLogin").html("Corrija sus datos!");
+            $("#lblfrmLogin").html("Corrija sus datos! &nbsp;");
         }
 
         if (valTxtPassword == "") {
-            txtPassword.css("border", "2px solid #3333CC");
-            txtPassword.css("color", "#3333CC");
+            txtPassword.css("border", "2px solid red");
+            txtPassword.css("color", "#FF0000");
             txtPassword.focus();
-            $("#lblfrmLogin").html("Corrija sus datos!");
+            $("#lblfrmLogin").html("Corrija sus datos! &nbsp;");
         }
 
         if ((valTxtUsuario != "") && (valTxtPassword != "")) {

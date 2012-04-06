@@ -1,8 +1,7 @@
-﻿using AplicacionSOA;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
-using AplicacionSOAP.Dominio;
+using AplicacionMVC.UsuarioWS;
 
 namespace AplicacionMVC.Tests
 {

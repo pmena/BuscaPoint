@@ -1,15 +1,132 @@
 ﻿body
-{
-    margin :0px;    
-    font-family: Georgia, "Times New Roman",Times, serif;
-    color:black;
+{    
+    background-color:#FFCC33;       
+    color:#4E4848;
 }
 
-input[type="text"]
+a
 {
-    width:150px;
+    color:#FFFFFF;    
+    font-weight:700;
+    letter-spacing:0px;
+    font-size:14px;
+    position:relative;
+    top:-4px;
 }
+a img
+{
+    position:relative;
+    top:4px;
+    left:-5px;
+    width:24px;
+}
+a:hover
+{
+    color:#D4A017;
+    text-decoration:none;
+}
+
+form,label, input
+{
+    margin:0px;
+}
+
+input[type="text"],input[type="password"]
+{
+    width:150px;   
+}
+
+
+#header
+{    
+    width:100%;
+    background-color:#CC3333;
+    height:45px;
+    -webkit-box-shadow: 0 0 20px rgb(255,204,51), -1px 5px 4px rgba(0,0,255,.45), 15px -20px 20px rgba(255,0,0,.75);
+    -moz-box-shadow: 0 0 20px rgb(255,204,51), -1px 5px 4px rgba(0,0,255,.45), 15px -20px 20px rgba(255,0,0,.75);
+    box-shadow: 0 0 20px rgb(255,204,51), -1px 5px 4px rgba(0,0,255,.45), 15px -20px 20px rgba(255,0,0,.75);   
+}
+
+.bpLeft, .bpCollapse, .bpExpand
+{
+    position:relative;
+    float:left;       
+}
+
+.bpLeft
+{
+    width:22%;
+}
+
+.bpCollapse .icon-backward:hover
+{
+    cursor:pointer;
+    padding-right:8px;
+    padding-top:3px;
+    padding-bottom:3px;
+    border:1px solid #bbb;    
+    background-color:#ECE5B6;
+}
+
+.bpRight
+{
+    position:relative;
+    float:right;
+    width:77%;    
+}
+
+.bpUser
+{
+    color:#3333CC;
+    font-size:12px;
+    font-weight:700;    
+}
+
+.bpValoradoService
+{
+    background-color:#EDEDED;
+    padding:1px;   
+    width:100%;
+    border:1px solid #727A60;
+    height:140px;
+}
+
+.bpValoradoUser
+{
+    background-color:#EDEDED;
+    padding:1px;   
+    width:100%;
+    border-top:1px solid #727A60;
+    border-right:1px solid #727A60;
+    border-left:1px solid #727A60;
+    height:100%;
+}
+
+.bpValoradoEmpresa
+{
+    background-color:#EDEDED;
+    padding:1px;   
+    width:100%;
+    border-top:1px solid #727A60;
+    border-right:1px solid #727A60;
+    border-left:1px solid #727A60;
+    height:100%;
+}
+
+.bpValorado
+{
+    background-color:#ffffff;
+    border:1px solid #bbb;
+    padding:5px;    
+}
+
 .textform{
     float:left;
     width:130px; 
+}
+
+.cHover
+{
+    background-color:#E3E4FA;  
+    cursor:pointer;    
 }

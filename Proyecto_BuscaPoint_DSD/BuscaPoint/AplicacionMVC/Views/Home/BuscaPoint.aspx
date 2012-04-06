@@ -2,15 +2,195 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     <title>.:: BuscaPoint - Todos los sitios que necesites y más ::.</title>
+    <link rel="StyleSheet" href="/Content/jRating.jquery.css" type="text/css" />
     <script src="/Scripts/jquery.js" type="text/javascript" language="javascript"></script>   
     <script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=true'></script>
     <script src="/Scripts/buscapoint.js" type="text/javascript" language="javascript"></script>
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">    
+    <div class="container-fluid" >
+        <div class="bpLeft">
+            <div class="bpValoradoService">                
+                <table width="100%" style="border:1px solid #bbb;background-color:White;margin:0px;height:100%;" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td colspan="3">
+                            <h3 style="color:#003366">&nbsp;  SERVICIO MEJOR VALORADO</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5" valign="middle" align="center" width="150px" nowrap="nowrap">
+                            <img src="../../img/pios-chicken.jpg" alt="Pios Chicken" width="120px" />
+                        </td>
+                        <td nowrap="nowrap" style="background-color:white" colspan="2">
+                            <h3 style="font-family:Georgia; color:#CC3333">PIOS CHICKEN</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="nowrap" style="background-color:white" colspan="2">
+                            <strong>Puntuación de Usuarios</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="nowrap" style="background-color:white;width:130px">
+                            <div class="basic" id="8_2"></div>            
+                        </td>
+                        <td><h3>7.5</h3></td>
+                    </tr>
+                    <tr>
+                        <td nowrap="nowrap" style="background-color:white" colspan="2">
+                           <label style='color:#768696'> Total de votos: 9000</label>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td nowrap="nowrap" style="background-color:white;height:5px" colspan="2">
+                            &nbsp;                           
+                        </td>
+                    </tr>
+                </table>                               
+                
+            </div>
 
 
-	<div class='centrar' id='container' name='container' style='display:none'>
+            <div class="bpValoradoUser">                
+                <table width="100%" style="border:1px solid #bbb;background-color:White;margin:0px;height:100%;" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td colspan="3">
+                            <h3 style="color:#003366">&nbsp; TOP COMMENTS</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="6" valign="middle" align="center" width="150px" nowrap="nowrap">                            
+                            <img border="0" alt="" src="/img/fuckencio_usr_pablo.jpg" style="width:120px" />
+                        </td>
+                        <td nowrap="nowrap" style="background-color:white">
+                            <label class="bpUser">Fuckencio Pablo Mena</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="background-color:white">
+                            Excelente lugar! =D buen hueco para pasar el rato, harta gente...        
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="nowrap" style="background-color:white">
+                           <i style='color:#003366'> Febrero 28 del 2012</i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="nowrap" style="background-color:white" >
+                           <img border="0" alt="" src="/img/fb_icon.jpg" style="position:relative;top:5px;left:-2px"> A 50 personas les gusta 
+
+                        </td>
+                    </tr>
+                    <tr>
+						<td align='right' colspan='2' height='15px' style='border-top-style:solid;border-top-color:#3333CC;border-top-width:1px;' style='font-family:"Verdana";font-size:10px;color:#3333CC;' >
+									<b> 230 comentarios más ...</b>&nbsp;&nbsp;
+								</td>
+							</tr>
+                    <tr style="height:5px">
+                        <td>
+                            &nbsp;
+                        </td>
+                    </tr>
+                </table>                                           
+            </div>
+
+            <div class="bpValoradoEmpresa">                
+                <table width="100%" style="border:1px solid #bbb;background-color:White;margin:0px;height:100%;" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td colspan="3">
+                            
+                    		<table cellspacing='0' bgcolor='#D8D8D8' width='100%' cellpadding='0' cellspacing='0'>
+					    		<tr>
+						    		<td width='2%'>&nbsp;</td>
+							    	<td colspan='2' style='font-family:"Verdana";font-size:10px;color:#000000;' nowrap="nowrap">
+								    	<b>Discotecas</b> en Miraflores >> <b><font color='#FF6600'>
+                                        Se encontraron 
+                                        <% Response.Write(TempData["Contador"]);%>
+                                        resultados</font></b>
+		    						</td>
+							    </tr>
+						    </table>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                    <td colspan="3">
+
+                    <div style="width: 100%; height: 400px; overflow: scroll; border: 2px dashed black; background-color: white;position:relative;left:-1px;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                <% 
+                    if (TempData["resultado"] != null)
+                    {
+                        foreach (AplicacionREST.Dominio.Empresa emp in (IEnumerable<AplicacionREST.Dominio.Empresa>)TempData["resultado"])
+                        {  %>
+				<tr class="result_business">
+					<td align='center' width='100%' style='border-top-style:solid;border-top-color:#3333CC;border-top-width:1px;'>
+						<table cellpadding='0' cellspacing='3' bgcolor='white' width='100%' class="tblResult" style="height:120px" >
+							<tr>
+								<td rowspan='5' width='40%' align='center' valign="middle">
+<img src='/img/logo_1_disco_miraflores.jpg' alt='xxx' border='0' />
+									<a href='http://<% Response.Write(emp.urlEmpr); %>' style="color:#003366" class="result_business_link" target="_blank" data-geo-lat="<% Response.Write(emp.codLatG); %>" data-geo-long="<% Response.Write(emp.codAltG); %>" >										
+                                        Página Web
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td style='font-family:"Verdana";font-size:12px;color:black;'>
+									<b><% Response.Write(emp.nomEmpresa); %></b>
+								</td>
+							</tr>
+							<tr>
+								<td style='font-family:"Verdana";font-size:10px;color:#787878;padding-right:5px'>
+									<i><b>
+                                        <% Response.Write(emp.desEmpP); %>
+                                   </b></i>
+								</td>
+							</tr>
+							<tr>
+								<td style='font-family:"Verdana";font-size:10px;color:#3333CC;'>
+									<b><% Response.Write(emp.desCatServicio); %></b><br>
+								</td>
+							</tr>
+							<tr>
+								<td style='font-family:"Verdana";font-size:10px;color:#000000;'>
+                                    <% Response.Write(emp.dirEmpr); %>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+                <% }
+                    } %>
+                    </table>
+                    </div>
+
+				</td>
+                </tr>
+                </table>                                           
+            </div>
+
+        </div>
+        <div class="bpRight">
+            <div id="buscaPointLbl" style="margin-bottom:3px;"></div>
+            <div id="map_canvas" style="width:99%;min-height:700px;height:100%; border:4px solid white;background-color:#D8D8D8"></div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+	<div class='centrar' id='container' name='container' style="display:none">
 		<div id='popup_buscar' style='z-index:333;background-color:#FFFF99;width:500px;height:300px;margin-left:-8px;margin-right:-305px;margin-top:-10px;margin-bottom:-10px;'>
 			<form id='form_buscar' name='form_buscar' action='Home/search'>
 			<table width='100%' >
@@ -122,137 +302,7 @@
 			</form>
 		</div>
 	</div>
-
-<table width='100%' cellpadding='5' cellspacing='10' style='margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
-	<tr>
-		<td width='25%' align='center' valign="top">
-			<table width='98%' height='100%'  style='border-style:solid;border-color:black;border-width:1px' bgcolor='white'>
-				<tr>
-					<td align='center' width='100%' height='65px' >
-						<table cellpading='0' cellspacing='0' width='100%' style='border-style:solid;border-color:#3333CC;;border-width:1px' cellpadding='0' cellspacing='0'>
-							<tr>
-								<td width='2%'>&nbsp;</td>
-								<td colspan='2' style='font-family:"Verdana";font-size:14px;color:#3333CC;'>
-									<b>Discoteca Arenas</b></a>
-								</td>
-							</tr>
-							<tr>
-								<td width='2%'>&nbsp;</td>
-								<td width='30%' height='35px' style='font-family:"Verdana";font-size:10px;color:#000000;'>
-									<b>Valoración</b></a>
-								</td>
-								<td width='68%' style='font-family:"Verdana";font-size:14px;color:#3333CC'>
-									<img src='/img/stars.png'></img>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<hr>
-						<table width='100%' bgcolor='#E7EBF2'>
-							<tr>
-								<td rowspan='5'>
-									<a href='http://www.facebook.com/severus.girl' >
-										<img src='/img/fuckencio_usr_pablo.jpg' border='0'>
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#3333CC;'>
-									<b>Fuckencio Pablo Mena</b>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;'>
-									Excelente lugar! =D buen hueco para pasar el rato, harta gente...
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#3333CC;'>
-									Febrero 28 desde <a href='#???'>Discoteca Arenas</a>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#3333CC;' >
-									<img src='/img/fb_icon.jpg' border='0'> A 50 personas les gusta
-								</td>
-							</tr>
-							<tr>
-								<td align='right' colspan='2' height='20px' style='border-top-style:solid;border-top-color:#3333CC;border-top-width:1px;' style='font-family:"Verdana";font-size:10px;color:#3333CC;' >
-									<b> 230 comentarios más ...</b>&nbsp;&nbsp;&nbsp;
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td align='center' width='100%' >
-						<table cellpading='0' cellspacing='0' bgcolor='#D8D8D8' width='100%' cellpadding='0' cellspacing='0'>
-							<tr>
-								<td width='2%'>&nbsp;</td>
-								<td colspan='2' style='font-family:"Verdana";font-size:10px;color:#000000;'>
-									<b>Discotecas</b> en Miraflores >> <b><font color='#FF6600'>
-                                    Se encontraron 
-                                    <% Response.Write(TempData["Contador"]);%>
-                                     resultados</font></b></a>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-
-                <% foreach (AplicacionREST.Dominio.Empresa emp in (IEnumerable<AplicacionREST.Dominio.Empresa>)TempData["resultado"])
-                   {  %>
-
-				<tr>
-					<td align='center' width='100%' style='border-top-style:solid;border-top-color:#3333CC;border-top-width:1px;'>
-						<table cellpading='0' cellspacing='0' bgcolor='white' width='100%' class="tblResult">
-							<tr>
-								<td rowspan='5' width='40%' align='center'>
-									<a href='http://sapporo.com.pe/' data-geo-lat="-12.108695914512028" data-geo-long="-77.0124864578247" >
-										<img src='/img/logo_1_disco_miraflores.jpg' border='0'>
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:12px;font-color:#3333CC;'>
-									<b><% Response.Write(emp.nomEmpresa); %></b>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#787878;'>
-									<i><b>
-                                        <% Response.Write(emp.desEmpP); %>
-                                   </b></i>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#3333CC;'>
-									<b><% Response.Write(emp.desCatServicio); %></b><br>
-								</td>
-							</tr>
-							<tr>
-								<td style='font-family:"Verdana";font-size:10px;color:#000000;'>
-                                    <% Response.Write(emp.dirEmpr); %>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-
-                <% } %>
-				
-			</table>
-
-            
-		</td>
-		<td width='80%' align='right' valign="middle">
-        <div id="map_canvas" style="width:100%;min-height:700px;height:100%; border:5px solid white"></div>
-		</td>
-	</table>
-
+   
 
 
 

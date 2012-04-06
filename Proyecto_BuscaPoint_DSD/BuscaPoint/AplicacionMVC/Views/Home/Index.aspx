@@ -119,11 +119,11 @@
 	</div>
 
 
-
-<table width='100%' cellpadding='0' cellspacing='0' style='margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+    <div id="bodyMain" class="container">
+<table width='100%' cellpadding='0' cellspacing='0' style='margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;' class="span12" >
 	<tr>
 		<td align='center'>
-			<table style='border-style:dashed;' height='40px' width='800px' cellpadding='0' cellspacing='0' style='margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+			<table style='border-style:dashed;' height='40px' width='100%' cellpadding='0' cellspacing='0' style='margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
 				<tr>
 					<td align='center' width='30%' style='font-family:"Verdana";font-size:14px;font-color:#3333CC;'>
 						<b>!Lo más nuevo!&nbsp;</b>
@@ -134,16 +134,16 @@
 	</tr>
 	<tr>
 		<td align='center' height='140px'  >
-			<table width='800px' height='100%' bgcolor='white'>
+			<table height='100%' bgcolor='white'>
 				<tr>
-					<td ><a href='Home/search' ><img src='/img/banner1.jpg' border='0'></a></td>
+					<td ><a href='Home/search' ></a> <img src='/img/banner1.jpg' border='0' /></td>
 				</tr>
 			</table>
 		</td>
 	</tr>
 	<tr>
 		<td align='center' >
-			<table style='border-style:dashed;' height='40px' width='800px' cellpadding='0' cellspacing='0' style='margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
+			<table style='border-style:dashed;' class="span10"  height='40px' cellpadding='0' cellspacing='0' style='margin-left:0px;margin-right:0px;margin-top:0px;margin-bottom:0px;'>
 				<tr>
 					<td align='center' style='font-family:"Verdana";font-size:10px;font-color:#3333CC'>
 						<input type='button' id='btn_1' name='btn_1' value='  1  ' size='15'>&nbsp;
@@ -403,7 +403,7 @@
 		</td>
 	</tr>
 </table>
-
+</div>
 
 
 

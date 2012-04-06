@@ -52,8 +52,10 @@ function validar() {
 
     if (message != "") {
         $("#mensaje_error_registro").css("display", "inline");
-        $("#mensaje_error_registro").css("color", "red");
-        $("#mensaje_error_registro").html("<b>" + message + "</b> <br /><br />");
+        $("#mensaje_error_registro").html("<div class='alert alert-error'><h4 class='alert-heading'>Oh my Good!</h4><a class='close' data-dismiss='alert'>×</a>" + message + "</div> ");
+        $(".close").click(function () {
+            $(this).parent().remove();
+        });
     } else {
         $("#mensaje_error_registro").css("display", "none");
         return true;
@@ -70,4 +72,7 @@ $(document).ready(function () {
         return false;
     });
 
+    $(".close").click(function () {
+        $(this).parent().remove();
+    });
 });

@@ -160,9 +160,11 @@ namespace AplicacionMVC.Controllers
         public ActionResult Registrar(FormCollection formCollection)
         {
             String result = string.Empty;
+            String result_status = string.Empty;
+            Response.Write("xxxxxx");
             try
             {
-                String nombre = formCollection["txt_nombres"].ToString();
+                String nombre = formCollection["txt_nombres"].ToString();                
                 String apellido = formCollection["txt_apellidos"].ToString();
                 String correo = formCollection["txt_email"].ToString();
                 String usuario = formCollection["txt_usr"].ToString();
@@ -179,9 +181,11 @@ namespace AplicacionMVC.Controllers
             catch(Exception ex)
             {
                 result = ex.Message.ToString();
+                result_status="fail";
             }
             finally {
                 Session["Register_result"] = result;
+                Session["Register_result_status"] = result_status;
             }  
             //String path = Request.UrlReferrer.LocalPath;            
             return View();
