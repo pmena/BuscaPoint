@@ -26,7 +26,7 @@ namespace AplicacionSOA
 
         //Funcion que permite obtener la posición de un usuario
         [OperationContract]
-        String Get_Position_Usuario(String usuario);     
+        Usuario Obtener_Usuario(String usuario);     
         
         //Funcion que permite editar datos de un usuario de BuscaPoint
         [OperationContract]

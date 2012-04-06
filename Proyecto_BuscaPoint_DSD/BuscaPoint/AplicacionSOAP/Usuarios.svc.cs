@@ -52,13 +52,17 @@ namespace AplicacionSOA
                 telefono = telefono,
                 correo = correo                
             };
-            if (UsuarioDAO.Crear(usuarioACrear) != null)
-            {
-                return "Felicitaciones! El usuario ha sido creado correctamente.";
+            if (UsuarioDAO.Existe(usuario)) {
+                return "El usuario " + usuario + " ya existe en el sistema.";
+            }else{            
+                if (UsuarioDAO.Crear(usuarioACrear) != null)
+                {
+                    return "El usuario ha sido creado correctamente.";
+                }
+                else {
+                    return "Lo sentimos, el servicio no esta disponible. Vuelva a intentarlo!";
+                }     
             }
-            else {
-                return "Lo sentimos, el servicio no esta disponible. Vuelva a intentarlo!";
-            }            
         }
 
         /**
@@ -73,9 +77,9 @@ namespace AplicacionSOA
         }
 
         //Funcion que obtiene la ubicación del usuario
-        public string Get_Position_Usuario(String usuario)
-        {            
-            return "Monterrico";
+        public Usuario Obtener_Usuario(String usuario)
+        {       
+            return UsuarioDAO.Obtener(usuario);
         }
 
         //Funcion que permite editar datos de un usuario de BuscaPoint
