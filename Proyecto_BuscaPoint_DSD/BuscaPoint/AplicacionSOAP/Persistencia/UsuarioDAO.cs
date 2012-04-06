@@ -20,6 +20,28 @@ namespace AplicacionSOA.Persistencia
             }
             return false;
         }
+
+        public Usuario Obtener(string usuario)
+        {
+            var queryOver = NHibernateHelper.ObtenerSesion().QueryOver<Usuario>()
+                        .Where(x => x.usuario == usuario);
+            if (queryOver.List().Count() >= 1)
+            {
+                return queryOver.List()[0];
+            }
+            return null;
+        }
+
+        public Boolean Existe(string usuario)
+        {
+            var queryOver = NHibernateHelper.ObtenerSesion().QueryOver<Usuario>()
+                        .Where(x => x.usuario == usuario);
+            if (queryOver.List().Count() >= 1)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
 

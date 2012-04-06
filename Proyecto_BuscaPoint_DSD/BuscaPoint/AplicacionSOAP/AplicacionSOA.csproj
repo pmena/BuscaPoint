@@ -59,7 +59,7 @@
     <Content Include="AplicacionMVC.csproj" />
     <Content Include="Comentarios.svc" />
     <EmbeddedResource Include="Dominio\Usuario.hbm.xml" />
-    <EmbeddedResource Include="Dominio\Distrito.hbm.xml" />
+    <Resource Include="Dominio\Distrito.hbm.xml" />
     <Content Include="Empresas.svc" />
     <Content Include="Puntuaciones.svc" />
     <Content Include="Usuarios.svc" />
@@ -111,7 +111,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2263</DevelopmentServerPort>
+          <DevelopmentServerPort>3198</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
