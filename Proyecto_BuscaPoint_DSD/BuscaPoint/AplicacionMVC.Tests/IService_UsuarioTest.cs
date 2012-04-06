@@ -103,26 +103,6 @@ namespace AplicacionMVC.Tests
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
-        /// <summary>
-        ///A test for Get_Position_Usuario
-        ///</summary>
-        // TODO: Ensure that the UrlToTest attribute specifies a URL to an ASP.NET page (for example,
-        // http://.../Default.aspx). This is necessary for the unit test to be executed on the web server,
-        // whether you are testing a page, web service, or a WCF service.
-        [TestMethod()]
-        [HostType("ASP.NET")]
-        [AspNetDevelopmentServerHost("E:\\upc\\AplicacionSOAP", "/")]
-        [UrlToTest("http://localhost:2263/")]
-        public void Get_Position_UsuarioTest()
-        {
-            IService_Usuarios target = CreateIService_Usuario(); // TODO: Initialize to an appropriate value
-            string usuario = string.Empty; // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
-            string actual;
-            actual = target.Get_Position_Usuario(usuario);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
 
         /// <summary>
         ///A test for Ingresar_usuario

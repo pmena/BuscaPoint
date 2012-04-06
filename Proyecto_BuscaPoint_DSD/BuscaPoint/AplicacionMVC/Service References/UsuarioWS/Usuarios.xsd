@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:3198/Usuarios.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AplicacionSOA.Dominio" />
   <xs:element name="Ingresar_usuario">
     <xs:complexType>
       <xs:sequence>
@@ -38,17 +39,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Get_Position_Usuario">
+  <xs:element name="Obtener_Usuario">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Get_Position_UsuarioResponse">
+  <xs:element name="Obtener_UsuarioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Get_Position_UsuarioResult" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AplicacionSOA.Dominio" minOccurs="0" name="Obtener_UsuarioResult" nillable="true" type="q1:Usuario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

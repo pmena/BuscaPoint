@@ -28,11 +28,11 @@
                     <td  nowrap="nowrap" align="right">                        
                         <% if (Session["Usuario"] == null)
                            { %>                         
-                        <label id="lblfrmLogin" style="color:#FFFF00;font-weight:600;">&nbsp;</label>
+                                <label id="lblfrmLogin" style="color:gold;font-weight:600;display:none">&nbsp;</label>
                                                         <%
                                     if (Session["Usuario_fail"] != null)
                                     {
-                                        Response.Write("<label><strong>Usuario y o contraseña incorrecta! <strong></label>");
+                                        Response.Write("<label id='lblAuth' style='color:gold;'><strong>Usuario y o contraseña incorrecta!  &nbsp;<strong></label>");
                                         Session["Usuario_fail"] = null;
                                     }
                                  %>
@@ -47,12 +47,14 @@
 						        
                             </form>
                         <% } else {  %>
+                            <div style="color:gold">
                             Bienvenido 
                             <strong> <% Response.Write(Session["Usuario"].ToString().ToUpper()); %> </strong>
                             &nbsp;                                                                           
                             Usted se encuentra en
                             <strong> <% Response.Write(Session["Usuario_Posicion"].ToString().ToUpper()); %> </strong>
                             &nbsp;
+                            </div>
                         <%  } %>
                     </td>
                     <td width="9%" align="right" nowrap="nowrap">
@@ -65,7 +67,7 @@
                         <% if (Session["Usuario"] == null){ %>                                                 
                             <a class='btn' href='/Home/Registrar' name='btn_registrar'>Registrate aquí</a>
                         <% } else {  %>
-                            <a href="/Home/Logout" onclick="if(confirm('Seguro que desea cerrar sesión?')){ return true; } return false;" >Logout </a> 
+                            <a href='/Home/Logout' onclick="if(confirm('Seguro que desea cerrar sesión?')){ return true; } return false;" ><img src="/img/logout.png" alt="Cerrar Sesión" />Logout</a>                            
                         <%  } %>                        
 					</td>
 				</tr>
