@@ -96,5 +96,70 @@ namespace AplicacionREST.Persistencia
             return listadoEmpresas;
         }
 
+        //Empresa segun codigo
+        public Empresa Obtener(string codEmpresa)
+        {            
+            Empresa empresa = null;
+            string sql = "";
+            sql = "select * from dbo.tbl_empresa emp ";
+            sql += "inner join dbo.tbl_cat_servicio catServ on catServ.codCatServ = emp.codCatServicio ";
+            sql += "inner join dbo.tbl_ubigeo catUbi on catUbi.codDpto = emp.codDpto and catUbi.codProv = emp.codProv and catUbi.codDist = emp.codDist ";
+            sql += "where codEmpresa = @codEmpresa";
+            Debug.WriteLine(sql);
+            
+            using (SqlConnection con = new SqlConnection(ConexionUtil.Cadena))
+            {
+                con.Open();
+                using (SqlCommand com = new SqlCommand(sql, con))
+                {
+                    com.Parameters.Add(new SqlParameter("@codEmpresa", codEmpresa));
+
+                    using (SqlDataReader resultado = com.ExecuteReader())
+                    {
+                        if (resultado.HasRows)
+                        {
+                            while (resultado.Read())
+                            {
+                                //Recorremos objeto por objeto y añadimos    
+                                empresa = new Empresa()
+                                {
+                                    codEmpresa = (string)resultado["codEmpresa"],
+                                    codDpto = (string)resultado["codDpto"],
+                                    codProv = (string)resultado["codProv"],
+                                    codDist = (string)resultado["codDist"],
+                                    codCatServicio = (string)resultado["codCatServicio"],
+                                    desCatServicio = (string)resultado["nomCatServ"],
+                                    nomEmpresa = (string)resultado["nomEmpresa"],
+                                    desEmpP = (string)resultado["desEmpresaPeq"],
+                                    desEmpG = (string)resultado["desEmpresaGen"],
+                                    dirEmpr = (string)resultado["direccionEmp"],
+                                    //desDpto = (string)resultado[""],
+                                    //desProv = (string)resultado[""],
+                                    desDist = (string)resultado["descripcion"],
+                                    telEmp1 = (string)resultado["telefonoEmp1"],
+                                    telEmp2 = (string)resultado["telefonoEmp2"],
+                                    celEmp1 = (string)resultado["celularEmp1"],
+                                    celEmp2 = (string)resultado["celularEmp2"],
+                                    faxEmpr = (string)resultado["faxEmpresa"],
+                                    urlEmpr = (string)resultado["urlEmpresa"],
+                                    codLatG = (string)resultado["codLatGoogle"],
+                                    codAltG = (string)resultado["codAltGoogle"],
+                                    codFcbk = (string)resultado["idFacebook"],
+                                    fecIngE = (string)resultado["fecIngreso"],
+                                    horFecE = (string)resultado["horIngreso"],
+                                    idFace = (string)resultado["idFacebook"]
+                                };
+                            }
+                        }
+                        else
+                        {
+                            Debug.WriteLine("No retornó registros");
+                        }
+                    }
+                }
+            }
+            return empresa;
+        }
+
     }
 }

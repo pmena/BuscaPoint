@@ -14,8 +14,17 @@
             <div class="bpValoradoService">                
                 <table width="100%" style="border:1px solid #bbb;background-color:White;margin:0px;height:100%;" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td colspan="3">
-                            <h3 style="color:#003366">&nbsp;  SERVICIO MEJOR VALORADO</h3>
+                        <td colspan="3">                            
+
+                            <table cellspacing='0' bgcolor='#D8D8D8' width='100%' cellpadding='0' cellspacing='0'>
+					    		<tr>
+						    		<td width='2%'>&nbsp;</td>
+							    	<td colspan='2' style='font-family:"Verdana";font-size:10px;color:#000000;' nowrap="nowrap">
+                                        <b> SERVICIO MEJOR VALORADO</b>								    	
+		    						</td>
+							    </tr>
+						    </table>
+
                         </td>
                     </tr>
                     <tr>
@@ -56,7 +65,18 @@
                 <table width="100%" style="border:1px solid #bbb;background-color:White;margin:0px;height:100%;" cellpadding="0" cellspacing="0">
                     <tr>
                         <td colspan="3">
-                            <h3 style="color:#003366">&nbsp; TOP COMMENTS</h3>
+
+
+                            <table cellspacing='0' bgcolor='#D8D8D8' width='100%' cellpadding='0' cellspacing='0'>
+					    		<tr>
+						    		<td width='2%'>&nbsp;</td>
+							    	<td colspan='2' style='font-family:"Verdana";font-size:10px;color:#000000;' nowrap="nowrap">
+                                        <b>TOP COMMENTS</b>								    	
+		    						</td>
+							    </tr>
+						    </table>
+
+
                         </td>
                     </tr>
                     <tr>
@@ -125,16 +145,28 @@
                     if (TempData["resultado"] != null)
                     {
                         foreach (AplicacionREST.Dominio.Empresa emp in (IEnumerable<AplicacionREST.Dominio.Empresa>)TempData["resultado"])
-                        {  %>
+                        {                             
+                            %>
 				<tr class="result_business">
 					<td align='center' width='100%' style='border-top-style:solid;border-top-color:#3333CC;border-top-width:1px;'>
 						<table cellpadding='0' cellspacing='3' bgcolor='white' width='100%' class="tblResult" style="height:120px" >
 							<tr>
 								<td rowspan='5' width='40%' align='center' valign="middle">
 <img src='/img/logo_1_disco_miraflores.jpg' alt='xxx' border='0' />
-									<a href='http://<% Response.Write(emp.urlEmpr); %>' style="color:#003366" class="result_business_link" target="_blank" data-geo-lat="<% Response.Write(emp.codLatG); %>" data-geo-long="<% Response.Write(emp.codAltG); %>" >										
+									<a href='http://<% Response.Write(emp.urlEmpr); %>' style="color:#003366;font-size:11px;" class="result_business_link" target="_blank" data-geo-lat="<% Response.Write(emp.codLatG); %>" data-geo-long="<% Response.Write(emp.codAltG); %>" >										
                                         Página Web
 									</a>
+                                    <br />
+
+                                    <% if(!TempData["usr"].Equals(string.Empty)){ %>
+                                        <a rel="prettyPhoto[ajax]" href='/Home/Votar/<% Response.Write(emp.codEmpresa.ToString().Trim()); %>/<% Response.Write(TempData["usr"]); %>?ajax=true&width=800&height=500' style="color:#003366;font-size:11px;" class="exEmpresa">										
+                                            Votar
+    									</a>
+                                    <% }else{ %>
+                                        <a href='LogOn' style="color:#003366;font-size:11px;" class="exEmpresa">										
+                                            Votar
+    									</a>
+                                    <% } %>
 								</td>
 							</tr>
 							<tr>
@@ -179,7 +211,6 @@
             <div id="map_canvas" style="width:99%;min-height:700px;height:100%; border:4px solid white;background-color:#D8D8D8"></div>
         </div>
     </div>
-
 
 
 
