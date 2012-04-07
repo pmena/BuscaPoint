@@ -60,6 +60,7 @@
     <Content Include="Comentarios.svc" />
     <EmbeddedResource Include="Dominio\Usuario.hbm.xml" />
     <Resource Include="Dominio\Distrito.hbm.xml" />
+    <EmbeddedResource Include="Dominio\Puntuacion.hbm.xml" />
     <Content Include="Empresas.svc" />
     <Content Include="Puntuaciones.svc" />
     <Content Include="Usuarios.svc" />
@@ -88,6 +89,7 @@
     </Compile>
     <Compile Include="Persistencia\BaseDAO.cs" />
     <Compile Include="Persistencia\ConexionUtil.cs" />
+    <Compile Include="Persistencia\PuntuacionDAO.cs" />
     <Compile Include="Persistencia\DistritoDAO.cs" />
     <Compile Include="Persistencia\NHibernateHelper.cs" />
     <Compile Include="Persistencia\UsuarioDAO.cs" />

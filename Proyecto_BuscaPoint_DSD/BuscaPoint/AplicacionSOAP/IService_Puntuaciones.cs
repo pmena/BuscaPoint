@@ -21,7 +21,7 @@ namespace AplicacionSOA
 
         //Funcion que permite a un usuario loguearse al sistema BuscaPoint
         [OperationContract]
-        String Ingresar_puntuacion_x_empresa(int codEmpresa, int puntuacion, int usuario);
+        String Ingresar_puntuacion_x_empresa(string codEmpresa, string codUsuario, string comentario, int puntos, string externo, string direccion);
 
     }
 

@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="AplicacionSOA.Puntuacion" CodeBehind="Puntuaciones.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="AplicacionSOA.Puntuaciones" CodeBehind="Puntuaciones.svc.cs" %>

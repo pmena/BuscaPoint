@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="AplicacionSOA"
+                   namespace="AplicacionSOA.Dominio"
+                   default-lazy="false">
+  <class name="Puntuacion" table="PUNTUACION">
+    <id name="idPuntuacion" column="idPuntuacion">
+      <generator class="increment" />
+    </id>
+    <property name="idUsuario" column="idUsuario" />
+    <property name="idEmpresa" column="idEmpresa" />
+    <property name="puntos" column="puntos" />
+    <property name="fecha" column="fecha" />
+    <property name="comentario" column="comentario" />
+    <property name="direccion" column="direccion" />
+    <property name="externo" column="externo" />
+  </class>
+</hibernate-mapping>
