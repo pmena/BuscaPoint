@@ -135,6 +135,57 @@ namespace AplicacionMVC.Controllers
 
         public ActionResult BuscaPoint()
         {
+            String ubigeo = string.Empty;
+            String categoria = string.Empty;
+            String nombre = string.Empty;
+            try
+            {
+                if (Session["search_Ubigeo"] != null)
+                {
+                    ubigeo = Session["search_Ubigeo"].ToString();
+                }
+                if (Session["search_Categoria"] != null)
+                {
+                    categoria = Session["search_Categoria"].ToString();
+                }
+                if (Session["search_Nombre"] != null)
+                {
+                    nombre = Session["search_Nombre"].ToString();
+                }
+
+                String url = "http://localhost:2998/Empresas.svc/Empresas/" + ubigeo + "/15/" + categoria + "/22/03/" + nombre;
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+                req.Method = "GET";
+                HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+                StreamReader reader = new StreamReader(res.GetResponseStream());
+                string ubigeosJson = reader.ReadToEnd();
+                List<Empresa> empresas = js.Deserialize<List<Empresa>>(ubigeosJson);
+
+                TempData["resultado"] = empresas;
+                TempData["Categoria"] = categoria;
+
+                if (Session["Usuario"] != null)
+                {
+                    TempData["usr"] = Session["Usuario"].ToString().Trim();
+                }
+                else
+                {
+                    TempData["usr"] = string.Empty;
+                }
+
+                try
+                {
+                    TempData["Contador"] = empresas.Count;
+                }
+                catch
+                {
+                    TempData["Contador"] = 0;
+                }
+            }
+            catch
+            {
+            }            
+
             return View();
         }
 
@@ -146,12 +197,28 @@ namespace AplicacionMVC.Controllers
             String nombre = string.Empty;
             try
             {
-                 ubigeo = Convert.ToInt32(formCollection["cmbUbigeo"]).ToString();
-                 categoria = formCollection["cmbCategoria"].ToString();
-                 nombre = formCollection["txtBusca"].ToString();
+                ubigeo = Convert.ToInt32(formCollection["cmbUbigeo"]).ToString();
+                categoria = formCollection["cmbCategoria"].ToString();
+                nombre = formCollection["txtBusca"].ToString();
+
+                Session["search_Ubigeo"] = ubigeo;
+                Session["search_Categoria"] = categoria;
+                Session["search_Nombre"] = nombre;             
             }
-            catch { 
-                
+            catch
+            {                
+                if (Session["search_Ubigeo"] != null)
+                {
+                    ubigeo = Session["search_Ubigeo"].ToString();
+                }
+                if (Session["search_Categoria"] != null)
+                {
+                    categoria = Session["search_Categoria"].ToString();
+                }
+                if (Session["search_Nombre"] != null)
+                {
+                    nombre = Session["search_Nombre"].ToString();
+                }
             }            
 
             String url = "http://localhost:2998/Empresas.svc/Empresas/"+ubigeo+"/15/"+categoria+"/22/03/"+nombre; 
@@ -164,6 +231,16 @@ namespace AplicacionMVC.Controllers
             
             TempData["resultado"] = empresas;
             TempData["Categoria"] = categoria;
+
+            if (Session["Usuario"] != null)
+            {
+                TempData["usr"] = Session["Usuario"].ToString().Trim();
+            }
+            else {
+                TempData["usr"] = string.Empty;
+            }
+
+
             try
             {
                 TempData["Contador"] = empresas.Count;
@@ -281,5 +358,85 @@ namespace AplicacionMVC.Controllers
             }           
             return View();
         }
+        
+        public ActionResult Votar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult PostComment(FormCollection formCollection)
+        {
+            String hidEmpresa = string.Empty;
+            String hidUsuario = string.Empty;
+            String txtComentario = string.Empty;
+            String txtExterno = string.Empty;
+            String txtDireccion = string.Empty;
+            String result = string.Empty;
+            int puntuacion = 0;
+
+            try
+            {
+                hidEmpresa = formCollection["hidEmpresa"].ToString();
+                hidUsuario = formCollection["hidUsuario"].ToString();
+                txtComentario = formCollection["txtComentario"].ToString();
+                puntuacion = Convert.ToInt32(formCollection["numPuntuacion"]);
+                txtExterno = formCollection["txtExterno"].ToString();
+                txtDireccion = Request.ServerVariables.Get("REMOTE_ADDR").ToString();
+
+                PuntuacionWS.Service_PuntuacionesClient ws = new PuntuacionWS.Service_PuntuacionesClient();
+                result = ws.Ingresar_puntuacion_x_empresa(hidEmpresa, hidUsuario, txtComentario, puntuacion, txtExterno, txtDireccion);
+                Response.Write(result);
+            }
+            catch(Exception ex) {
+                Response.Write(ex.Message.ToString());
+            }
+            return View();
+        }
+
+     
+        [HttpGet]
+        public ActionResult Votar(string emp, string usr)
+        {            
+            String codEmp = string.Empty;
+            String codUsr = string.Empty;
+
+            if (emp != null) 
+            {
+                codEmp = emp;
+            }
+            if (usr != null)
+            {
+                codUsr = usr;
+            }
+            
+            if ((!codUsr.Equals(string.Empty)) && (!codEmp.Equals(string.Empty)))
+            {
+               // Response.Write("Ok vale todo");
+            }
+
+            TempData["codEmp"] = codEmp;
+            TempData["codUsr"] = codUsr;
+
+            try
+            {                
+                String url = "http://localhost:2998/Empresas.svc/Empresas/obtener/"+codEmp;
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+                req.Method = "GET";
+                HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+                StreamReader reader = new StreamReader(res.GetResponseStream());
+                string ubigeosJson = reader.ReadToEnd();
+                Empresa empresas = js.Deserialize<Empresa>(ubigeosJson);
+
+                TempData["Empresa"] = empresas;
+            }
+            catch(Exception ex) {
+                Response.Write(ex.Message.ToString());                
+            }
+
+
+            return View();
+        }
+
     }
 }

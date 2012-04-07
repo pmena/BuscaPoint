@@ -21,7 +21,11 @@ namespace AplicacionMVC
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
-
+            routes.MapRoute(
+                "Votar", // Route name
+                "{controller}/{action}/{emp}/{usr}", // URL with parameters
+                new { controller = "Home", action = "Votar", emp = UrlParameter.Optional, usr = UrlParameter.Optional } // Parameter defaults
+            );
         }
 
         protected void Application_Start()

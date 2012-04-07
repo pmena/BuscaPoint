@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cdae1753-64a4-444f-b032-746b4f9c65ca" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:3198/Puntuaciones.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Puntuaciones.wsdl" MetadataType="Wsdl" ID="78a30074-a550-4eae-a502-36a23472d99c" SourceId="1" SourceUrl="http://localhost:3198/Puntuaciones.svc?wsdl" />
+    <MetadataFile FileName="Puntuaciones.disco" MetadataType="Disco" ID="6784df56-dd4c-44b3-933e-2fbd268b211c" SourceId="1" SourceUrl="http://localhost:3198/Puntuaciones.svc?disco" />
+    <MetadataFile FileName="Puntuaciones.xsd" MetadataType="Schema" ID="d4f22fe4-b161-4d80-bf5f-4ca016f2c5da" SourceId="1" SourceUrl="http://localhost:3198/Puntuaciones.svc?xsd=xsd1" />
+    <MetadataFile FileName="Puntuaciones1.xsd" MetadataType="Schema" ID="df49c81f-3159-4840-86b4-945b4de4bd67" SourceId="1" SourceUrl="http://localhost:3198/Puntuaciones.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

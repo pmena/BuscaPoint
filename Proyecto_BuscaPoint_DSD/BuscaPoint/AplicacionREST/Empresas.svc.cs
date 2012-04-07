@@ -20,5 +20,9 @@ namespace AplicacionREST
             return dao.ObtenerListado(tipoEmpresa, codDpto, codProv, codDist, codCatServ, nomEmp);
         }
 
+        public Empresa ObtenerEmpresa(string codEmpresa)
+        {
+            return dao.Obtener(codEmpresa);
+        }         
     }
 }

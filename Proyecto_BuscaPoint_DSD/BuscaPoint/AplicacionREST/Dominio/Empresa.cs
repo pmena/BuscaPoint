@@ -58,5 +58,7 @@ namespace AplicacionREST.Dominio
         public string fecIngE { get; set; }
         [DataMember]
         public string horFecE { get; set; }
+        [DataMember]
+        public string idFace { get; set; }
     }
 }
