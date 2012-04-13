@@ -19,5 +19,9 @@ namespace AplicacionREST
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "Empresas/obtener/{codEmpresa}", ResponseFormat = WebMessageFormat.Json)]
         Empresa ObtenerEmpresa(string codEmpresa);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "Empresas/obtenerTerminoEmpresa/{area}", ResponseFormat = WebMessageFormat.Json)]
+        List<Empresa> ObtenerTerminoEmpresa(string area);        
     }
 }

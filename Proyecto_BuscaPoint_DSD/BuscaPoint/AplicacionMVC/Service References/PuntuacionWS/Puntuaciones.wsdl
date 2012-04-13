@@ -4,6 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:3198/Puntuaciones.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:3198/Puntuaciones.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:3198/Puntuaciones.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AplicacionSOA.Dominio" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService_Puntuaciones_Obtener_puntuacion_x_empresa_InputMessage">
@@ -18,6 +19,18 @@
   <wsdl:message name="IService_Puntuaciones_Ingresar_puntuacion_x_empresa_OutputMessage">
     <wsdl:part name="parameters" element="tns:Ingresar_puntuacion_x_empresaResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_Puntuaciones_get_Comment_Empresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:get_Comment_Empresa" />
+  </wsdl:message>
+  <wsdl:message name="IService_Puntuaciones_get_Comment_Empresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:get_Comment_EmpresaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_Puntuaciones_getBestEmpresa_InputMessage">
+    <wsdl:part name="parameters" element="tns:getBestEmpresa" />
+  </wsdl:message>
+  <wsdl:message name="IService_Puntuaciones_getBestEmpresa_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getBestEmpresaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService_Puntuaciones">
     <wsdl:operation name="Obtener_puntuacion_x_empresa">
       <wsdl:input wsaw:Action="http://tempuri.org/IService_Puntuaciones/Obtener_puntuacion_x_empresa" message="tns:IService_Puntuaciones_Obtener_puntuacion_x_empresa_InputMessage" />
@@ -26,6 +39,14 @@
     <wsdl:operation name="Ingresar_puntuacion_x_empresa">
       <wsdl:input wsaw:Action="http://tempuri.org/IService_Puntuaciones/Ingresar_puntuacion_x_empresa" message="tns:IService_Puntuaciones_Ingresar_puntuacion_x_empresa_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService_Puntuaciones/Ingresar_puntuacion_x_empresaResponse" message="tns:IService_Puntuaciones_Ingresar_puntuacion_x_empresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="get_Comment_Empresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService_Puntuaciones/get_Comment_Empresa" message="tns:IService_Puntuaciones_get_Comment_Empresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService_Puntuaciones/get_Comment_EmpresaResponse" message="tns:IService_Puntuaciones_get_Comment_Empresa_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getBestEmpresa">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService_Puntuaciones/getBestEmpresa" message="tns:IService_Puntuaciones_getBestEmpresa_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService_Puntuaciones/getBestEmpresaResponse" message="tns:IService_Puntuaciones_getBestEmpresa_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService_Puntuaciones" type="tns:IService_Puntuaciones">
@@ -41,6 +62,24 @@
     </wsdl:operation>
     <wsdl:operation name="Ingresar_puntuacion_x_empresa">
       <soap:operation soapAction="http://tempuri.org/IService_Puntuaciones/Ingresar_puntuacion_x_empresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Comment_Empresa">
+      <soap:operation soapAction="http://tempuri.org/IService_Puntuaciones/get_Comment_Empresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBestEmpresa">
+      <soap:operation soapAction="http://tempuri.org/IService_Puntuaciones/getBestEmpresa" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

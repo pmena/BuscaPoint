@@ -7,22 +7,25 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-<table width="80%" align="center" cellpadding="30" cellspacing="0" border="0">
+<p></p>
+<table width="80%" align="center" cellpadding="30" cellspacing="10" border="0">
 <tr>
-    <td align="center">
-        <img alt="BuscaPoint" src="../../img/Buscapoint.png" />
+    <td align="right" width="40%">
+        <img alt="BuscaPoint" src="../../img/Buscapoint.png" width="500px" />
     </td>
-</tr>
-<tr>
-    <td align="center">
-        <form method="POST" action="/Home/BuscaPoint" id="frmSearch" name="frmSearch">
-            Buscar:
-            <input type="text" id="txtBusca" name="txtBusca" class="input-medium search-query" value="" placeholder="Escribe el lugar a buscar" style="width:60%" />
+    <td align="left">
+        <form method="POST" action="/Home/BuscaPoint" id="frmSearch" name="frmSearch">            
+            <h2 style="color:#3333CC">Que servicio busca?</h2>
+            <input type="text" id="txtBusca" name="txtBusca" class="input-medium search-query" value="" placeholder="Escribe el nombre del servicio" style="width:60%" />
             <br />
-             <br/>Ubigeo <%: Html.DropDownList("cmbUbigeo", (IEnumerable<SelectListItem>)TempData["Ubigeo"]) %> 
-             <br/>Categor&iacute;a <%: Html.DropDownList("cmbCategoria", (IEnumerable<SelectListItem>)TempData["Categoria"]) %>              
-            <input type="submit" value="Buscar!" style="width:100px;">
+
+             <h2 style="color:#3333CC">En que distrito?</h2>
+             <%: Html.DropDownList("cmbUbigeo", (IEnumerable<SelectListItem>)TempData["Ubigeo"]) %> 
+           
+             <h2 style="color:#3333CC">Que categoría?</h2>
+             <%: Html.DropDownList("cmbCategoria", (IEnumerable<SelectListItem>)TempData["Categoria"]) %>              
+             <br />
+            <input type="submit" class="btn btn-primary" value="Buscar!" style="width:100px;" />
         </form>
     </td>
 </tr>

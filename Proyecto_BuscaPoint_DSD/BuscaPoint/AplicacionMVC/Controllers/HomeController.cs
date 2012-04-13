@@ -7,6 +7,7 @@ using System.Web.Script.Serialization;
 using System.Net;
 using System.IO;
 using AplicacionREST.Dominio;
+using AplicacionMVC.PuntuacionWS;
 
 
 namespace AplicacionMVC.Controllers
@@ -184,7 +185,7 @@ namespace AplicacionMVC.Controllers
             }
             catch
             {
-            }            
+            }                      
 
             return View();
         }
@@ -249,6 +250,42 @@ namespace AplicacionMVC.Controllers
                 TempData["Contador"] = 0;
             }
 
+
+            /*
+                [WebInvoke(Method = "GET", UriTemplate = "Empresas/obtenerTerminoEmpresa/{area}", ResponseFormat = WebMessageFormat.Json)]
+                List<Empresa> ObtenerTerminoEmpresa(string area);                         
+            */
+
+            //Buscar el mejor servicio para el termino indicado
+            url = "http://localhost:2998/Empresas.svc/Empresas/obtenerTerminoEmpresa/" + nombre;
+            Response.Write(url);
+
+            return View();
+            req = (HttpWebRequest)WebRequest.Create(url);
+            req.Method = "GET";
+            res = (HttpWebResponse)req.GetResponse();
+            reader = new StreamReader(res.GetResponseStream());
+            ubigeosJson = reader.ReadToEnd();
+            empresas = js.Deserialize<List<Empresa>>(ubigeosJson);
+
+            string lstStr = string.Empty;
+            foreach(Empresa emp in empresas){
+                lstStr = emp.codEmpresa + ",";
+            }
+            lstStr = lstStr.Substring(0,lstStr.Length - 1);
+
+            PuntuacionWS.Service_PuntuacionesClient wspt = new PuntuacionWS.Service_PuntuacionesClient();
+            Puntuacion pt = (Puntuacion) wspt.getBestEmpresa(lstStr);
+
+            Empresa emps = new Empresa();
+            foreach(Empresa emp in empresas){
+                if(emp.codEmpresa.Equals(pt.idEmpresa)){
+                    emps = emp; 
+                }
+            }
+
+            TempData["bestEmpr"] = emps;
+            TempData["bestPunt"] = pt;
             return View();
         }
 
@@ -394,7 +431,25 @@ namespace AplicacionMVC.Controllers
             return View();
         }
 
-     
+        [HttpPost]
+        public ActionResult getComment(FormCollection formCollection)
+        {
+            String hidEmpresa = string.Empty;
+            try
+            {
+                hidEmpresa = formCollection["hidEmpresa"].ToString();
+                
+                PuntuacionWS.Service_PuntuacionesClient ws = new PuntuacionWS.Service_PuntuacionesClient();
+                List<Puntuacion> lista =  ws.get_Comment_Empresa(hidEmpresa).ToList<Puntuacion>();
+                TempData["lista"] = lista;
+           }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message.ToString());
+            }
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Votar(string emp, string usr)
         {            
