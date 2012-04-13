@@ -22,6 +22,12 @@ namespace AplicacionSOA
             return "... Mi nombre es Hetalia!";
         }
 
+        //Funcion que permite obtener los comentarios de una empresa
+        public List<Puntuacion> get_Comment_Empresa(string codEmpresa)
+        {
+            return dao.getCommentsEmpresa(codEmpresa);
+        }
+
         //Funcion que permite guardar datos de una puntuacion de BuscaPoint
         public String Ingresar_puntuacion_x_empresa(string codEmpresa, string codUsuario, string comentario, int puntos, string externo, string direccion)
         {
@@ -45,7 +51,7 @@ namespace AplicacionSOA
                 else {
                     if (dao.Crear(vo) != null)
                     {
-                        return "Comentario registrado correctamente.";
+                        return "Valoración registrado correctamente.";
                     }
                     else {
                         return "El servicio no esta disponible temporalmente. Intenteló más tarde.";
@@ -61,7 +67,7 @@ namespace AplicacionSOA
                 {
                     if (dao.Crear(vo) != null)
                     {
-                        return "Comentario registrado correctamente.";
+                        return "Valoración registrado correctamente.";
                     }
                     else
                     {
@@ -72,5 +78,10 @@ namespace AplicacionSOA
             return "... Mi nombre es Hetalia!";
         }
 
+        //Funcion que permite obtener la mejor puntuacion de un servicio
+        public Puntuacion getBestEmpresa(string lst) 
+        {
+            return dao.getBestEmpresa(lst);
+        }
     }
 }
