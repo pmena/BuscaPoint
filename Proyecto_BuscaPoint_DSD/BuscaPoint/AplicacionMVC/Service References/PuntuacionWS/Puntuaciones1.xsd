@@ -64,4 +64,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="Tomar_puntuacion_x_empresa">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Tomar_puntuacion_x_empresaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
