@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using AplicacionSOA.Dominio;
 
 namespace AplicacionSOA
 {
@@ -23,6 +24,13 @@ namespace AplicacionSOA
         [OperationContract]
         String Ingresar_puntuacion_x_empresa(string codEmpresa, string codUsuario, string comentario, int puntos, string externo, string direccion);
 
+        //Funcion que permite a un usuario loguearse al sistema BuscaPoint
+        [OperationContract]
+        List<Puntuacion> get_Comment_Empresa(string codEmpresa);
+
+        //Funcion que permite obtener la mejor puntuacion de un servicio
+        [OperationContract]
+        Puntuacion getBestEmpresa(string lst);
     }
 
 }
