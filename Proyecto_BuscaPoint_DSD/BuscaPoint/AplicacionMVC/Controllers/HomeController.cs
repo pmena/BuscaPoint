@@ -423,6 +423,8 @@ namespace AplicacionMVC.Controllers
 
                 PuntuacionWS.Service_PuntuacionesClient ws = new PuntuacionWS.Service_PuntuacionesClient();
                 result = ws.Ingresar_puntuacion_x_empresa(hidEmpresa, hidUsuario, txtComentario, puntuacion, txtExterno, txtDireccion);
+                ws.Tomar_puntuacion_x_empresa();
+
                 Response.Write(result);
             }
             catch(Exception ex) {

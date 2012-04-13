@@ -21,7 +21,7 @@ function validarVotar() {
 }
 
 function postComment(empresa, usuario) {
-    var modal = $('#myModal')
+    var modal = $('#myModal');
     modal.css('display', '');
     modal.removeClass('hide');
     modal.removeClass('fade');

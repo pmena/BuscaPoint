@@ -185,6 +185,9 @@ namespace AplicacionMVC.PuntuacionWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService_Puntuaciones/getBestEmpresa", ReplyAction="http://tempuri.org/IService_Puntuaciones/getBestEmpresaResponse")]
         AplicacionMVC.PuntuacionWS.Puntuacion getBestEmpresa(string lst);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService_Puntuaciones/Tomar_puntuacion_x_empresa", ReplyAction="http://tempuri.org/IService_Puntuaciones/Tomar_puntuacion_x_empresaResponse")]
+        void Tomar_puntuacion_x_empresa();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -228,6 +231,10 @@ namespace AplicacionMVC.PuntuacionWS {
         
         public AplicacionMVC.PuntuacionWS.Puntuacion getBestEmpresa(string lst) {
             return base.Channel.getBestEmpresa(lst);
+        }
+        
+        public void Tomar_puntuacion_x_empresa() {
+            base.Channel.Tomar_puntuacion_x_empresa();
         }
     }
 }
