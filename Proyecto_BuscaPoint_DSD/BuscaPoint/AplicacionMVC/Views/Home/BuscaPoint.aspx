@@ -9,13 +9,18 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">    
-    <div class="container-fluid" >
+
+    <div >
         <div class="bpLeft">
             <div class="bpValoradoService">                
+
+            <% /*if(TempData["bestEmpr"] != null){
+                   AplicacionREST.Dominio.Empresa empr = (AplicacionREST.Dominio.Empresa)TempData["bestEmpr"];*/
+            %>
+
                 <table width="100%" style="border:1px solid #bbb;background-color:White;margin:0px;height:100%;" cellpadding="0" cellspacing="0">
                     <tr>
                         <td colspan="3">                            
-
                             <table cellspacing='0' bgcolor='#D8D8D8' width='100%' cellpadding='0' cellspacing='0'>
 					    		<tr>
 						    		<td width='2%'>&nbsp;</td>
@@ -24,7 +29,6 @@
 		    						</td>
 							    </tr>
 						    </table>
-
                         </td>
                     </tr>
                     <tr>
@@ -32,7 +36,7 @@
                             <img src="../../img/pios-chicken.jpg" alt="Pios Chicken" width="120px" />
                         </td>
                         <td nowrap="nowrap" style="background-color:white" colspan="2">
-                            <h3 style="font-family:Georgia; color:#CC3333">PIOS CHICKEN</h3>
+                            <h3 style="font-family:Georgia; color:#CC3333"><% // Response.Write(empr.nomEmpresa.ToUpper()); %> APPFSDDFFK</h3>
                         </td>
                     </tr>
                     <tr>
@@ -57,6 +61,7 @@
                         </td>
                     </tr>
                 </table>                               
+            <% //} %>
                 
             </div>
 
@@ -149,24 +154,22 @@
                             %>
 				<tr class="result_business">
 					<td align='center' width='100%' style='border-top-style:solid;border-top-color:#3333CC;border-top-width:1px;'>
-						<table cellpadding='0' cellspacing='3' bgcolor='white' width='100%' class="tblResult" style="height:120px" >
+						<table cellpadding='0' cellspacing='3' bgcolor='white' width='100%' class="tblResult" style="height:130px" >
 							<tr>
 								<td rowspan='5' width='40%' align='center' valign="middle">
 <img src='/img/logo_1_disco_miraflores.jpg' alt='xxx' border='0' />
-									<a href='http://<% Response.Write(emp.urlEmpr); %>' style="color:#003366;font-size:11px;" class="result_business_link" target="_blank" data-geo-lat="<% Response.Write(emp.codLatG); %>" data-geo-long="<% Response.Write(emp.codAltG); %>" >										
+									<a href='http://<% Response.Write(emp.urlEmpr); %>' style="color:#3333CC;font-size:11px;margin-top:2px;padding-top:1px;padding-bottom:1px;" class="result_business_link" target="_blank" data-geo-lat="<% Response.Write(emp.codLatG); %>" data-geo-long="<% Response.Write(emp.codAltG); %>" >										
                                         Página Web
-									</a>
+									</a>                        
                                     <br />
-
                                     <% if(!TempData["usr"].Equals(string.Empty)){ %>
-                                        <a rel="prettyPhoto[ajax]" href='/Home/Votar/<% Response.Write(emp.codEmpresa.ToString().Trim()); %>/<% Response.Write(TempData["usr"]); %>?ajax=true&width=800&height=500' style="color:#003366;font-size:11px;" class="exEmpresa">										
-                                            Votar
-    									</a>
-                                    <% }else{ %>
-                                        <a href='LogOn' style="color:#003366;font-size:11px;" class="exEmpresa">										
-                                            Votar
-    									</a>
-                                    <% } %>
+                                        <a style="color:#3333CC;font-size:11px;margin-top:2px;padding-top:1px;padding-bottom:1px;" data-toggle="modal" href="#myModal" onclick="return postComment('<% Response.Write(emp.codEmpresa.ToString().Trim()); %>','<% Response.Write(TempData["usr"]); %>');" >Valorar</a>
+                                        <br />
+                                    <% } %>                                        
+
+                                    <a href='#' style="color:#3333CC;font-size:11px;margin-top:2px;padding-top:1px;padding-bottom:1px;" data-toggle="modal" href="#myModalComment" onclick="return getComment('<% Response.Write(emp.codEmpresa.ToString().Trim()); %>');" >
+                                        Comentarios
+									</a>            
 								</td>
 							</tr>
 							<tr>
@@ -213,10 +216,28 @@
     </div>
 
 
+    <div class="modal hide fade" id="myModal" style="display:none;width:750px;height:500px" >
+  <div class="modal-header">
+    <h3 style="color:#3333CC">Valore el servicio de la empresa y dejenos sus comentarios!</h3>
+  </div>
+  <div class="modal-body">  </div>
+  <div id="VotarPrincipal" class="container-fluid" style="min-height:40px">  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" id="btnCloseModal">Cerrar</a>
+    <a href="#" class="btn btn-primary" id="btnSaveVotar">Guardar !</a>
+  </div>
+</div>
 
 
-
-
+    <div class="modal hide fade" id="myModalComment" style="display:none;width:750px;height:500px" >
+  <div class="modal-header">
+    <h3 style="color:#3333CC">Valoración de la empresa!</h3>
+  </div>
+  <div class="modal-body" style="height:350px;overflow: scroll; position:relative;left:-1px;">  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" id="btnCloseModalVal" >Cerrar</a>
+  </div>
+</div>
 
 
 

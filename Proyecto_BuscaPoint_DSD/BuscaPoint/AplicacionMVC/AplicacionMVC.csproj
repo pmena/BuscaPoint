@@ -163,6 +163,7 @@
     <Content Include="img\stars.png" />
     <Content Include="img\vote.png" />
     <Content Include="img\wasabi-logo1.png" />
+    <Content Include="Scripts\bootstrap-modal.js" />
     <Content Include="Scripts\buscapoint.js" />
     <Content Include="Scripts\jqModal.js" />
     <Content Include="Scripts\jquery.prettyPhoto.js" />
@@ -171,11 +172,17 @@
     <Content Include="Scripts\registrar.js" />
     <Content Include="Scripts\search.js" />
     <Content Include="Scripts\index.js" />
+    <None Include="Service References\PuntuacionWS\AplicacionMVC.PuntuacionWS.Puntuacion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\PuntuacionWS\Puntuaciones.wsdl" />
     <None Include="Service References\PuntuacionWS\Puntuaciones.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\PuntuacionWS\Puntuaciones1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PuntuacionWS\Puntuaciones2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UsuarioWS\AplicacionMVC.UsuarioWS.Usuario.datasource">
@@ -196,6 +203,8 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Views\Home\BuscaPoint.aspx" />
+    <Content Include="Views\Home\getComment.aspx" />
+    <Content Include="Views\Home\PostComment.aspx" />
     <Content Include="Views\Home\Votar.aspx" />
     <Content Include="Views\Home\Registrar.aspx" />
     <Content Include="Views\Home\Search.aspx" />

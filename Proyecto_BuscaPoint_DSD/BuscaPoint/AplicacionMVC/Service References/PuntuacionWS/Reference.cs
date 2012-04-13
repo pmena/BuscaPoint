@@ -9,7 +9,166 @@
 //------------------------------------------------------------------------------
 
 namespace AplicacionMVC.PuntuacionWS {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Puntuacion", Namespace="http://schemas.datacontract.org/2004/07/AplicacionSOA.Dominio")]
+    [System.SerializableAttribute()]
+    public partial class Puntuacion : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string comentarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string direccionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string externoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string fechaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string idEmpresaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int idPuntuacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string idUsuarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double puntosField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string comentario {
+            get {
+                return this.comentarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.comentarioField, value) != true)) {
+                    this.comentarioField = value;
+                    this.RaisePropertyChanged("comentario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string direccion {
+            get {
+                return this.direccionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.direccionField, value) != true)) {
+                    this.direccionField = value;
+                    this.RaisePropertyChanged("direccion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string externo {
+            get {
+                return this.externoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.externoField, value) != true)) {
+                    this.externoField = value;
+                    this.RaisePropertyChanged("externo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string fecha {
+            get {
+                return this.fechaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.fechaField, value) != true)) {
+                    this.fechaField = value;
+                    this.RaisePropertyChanged("fecha");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string idEmpresa {
+            get {
+                return this.idEmpresaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.idEmpresaField, value) != true)) {
+                    this.idEmpresaField = value;
+                    this.RaisePropertyChanged("idEmpresa");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int idPuntuacion {
+            get {
+                return this.idPuntuacionField;
+            }
+            set {
+                if ((this.idPuntuacionField.Equals(value) != true)) {
+                    this.idPuntuacionField = value;
+                    this.RaisePropertyChanged("idPuntuacion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string idUsuario {
+            get {
+                return this.idUsuarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.idUsuarioField, value) != true)) {
+                    this.idUsuarioField = value;
+                    this.RaisePropertyChanged("idUsuario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double puntos {
+            get {
+                return this.puntosField;
+            }
+            set {
+                if ((this.puntosField.Equals(value) != true)) {
+                    this.puntosField = value;
+                    this.RaisePropertyChanged("puntos");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PuntuacionWS.IService_Puntuaciones")]
@@ -20,6 +179,12 @@ namespace AplicacionMVC.PuntuacionWS {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService_Puntuaciones/Ingresar_puntuacion_x_empresa", ReplyAction="http://tempuri.org/IService_Puntuaciones/Ingresar_puntuacion_x_empresaResponse")]
         string Ingresar_puntuacion_x_empresa(string codEmpresa, string codUsuario, string comentario, int puntos, string externo, string direccion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService_Puntuaciones/get_Comment_Empresa", ReplyAction="http://tempuri.org/IService_Puntuaciones/get_Comment_EmpresaResponse")]
+        AplicacionMVC.PuntuacionWS.Puntuacion[] get_Comment_Empresa(string codEmpresa);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService_Puntuaciones/getBestEmpresa", ReplyAction="http://tempuri.org/IService_Puntuaciones/getBestEmpresaResponse")]
+        AplicacionMVC.PuntuacionWS.Puntuacion getBestEmpresa(string lst);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +220,14 @@ namespace AplicacionMVC.PuntuacionWS {
         
         public string Ingresar_puntuacion_x_empresa(string codEmpresa, string codUsuario, string comentario, int puntos, string externo, string direccion) {
             return base.Channel.Ingresar_puntuacion_x_empresa(codEmpresa, codUsuario, comentario, puntos, externo, direccion);
+        }
+        
+        public AplicacionMVC.PuntuacionWS.Puntuacion[] get_Comment_Empresa(string codEmpresa) {
+            return base.Channel.get_Comment_Empresa(codEmpresa);
+        }
+        
+        public AplicacionMVC.PuntuacionWS.Puntuacion getBestEmpresa(string lst) {
+            return base.Channel.getBestEmpresa(lst);
         }
     }
 }

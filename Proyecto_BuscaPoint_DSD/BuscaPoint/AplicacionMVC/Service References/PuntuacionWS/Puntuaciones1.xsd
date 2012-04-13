@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:3198/Puntuaciones.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AplicacionSOA.Dominio" />
   <xs:element name="Obtener_puntuacion_x_empresa">
     <xs:complexType>
       <xs:sequence>
@@ -32,6 +33,34 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="Ingresar_puntuacion_x_empresaResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="get_Comment_Empresa">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codEmpresa" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="get_Comment_EmpresaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AplicacionSOA.Dominio" minOccurs="0" name="get_Comment_EmpresaResult" nillable="true" type="q1:ArrayOfPuntuacion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getBestEmpresa">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="lst" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getBestEmpresaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AplicacionSOA.Dominio" minOccurs="0" name="getBestEmpresaResult" nillable="true" type="q2:Puntuacion" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -23,8 +23,9 @@
   <Metadata>
     <MetadataFile FileName="Puntuaciones.wsdl" MetadataType="Wsdl" ID="78a30074-a550-4eae-a502-36a23472d99c" SourceId="1" SourceUrl="http://localhost:3198/Puntuaciones.svc?wsdl" />
     <MetadataFile FileName="Puntuaciones.disco" MetadataType="Disco" ID="6784df56-dd4c-44b3-933e-2fbd268b211c" SourceId="1" SourceUrl="http://localhost:3198/Puntuaciones.svc?disco" />
-    <MetadataFile FileName="Puntuaciones.xsd" MetadataType="Schema" ID="d4f22fe4-b161-4d80-bf5f-4ca016f2c5da" SourceId="1" SourceUrl="http://localhost:3198/Puntuaciones.svc?xsd=xsd1" />
+    <MetadataFile FileName="Puntuaciones2.xsd" MetadataType="Schema" ID="fc30536c-fe08-4c52-a355-9fbdaac8972d" SourceId="1" SourceUrl="http://localhost:3198/Puntuaciones.svc?xsd=xsd2" />
     <MetadataFile FileName="Puntuaciones1.xsd" MetadataType="Schema" ID="df49c81f-3159-4840-86b4-945b4de4bd67" SourceId="1" SourceUrl="http://localhost:3198/Puntuaciones.svc?xsd=xsd0" />
+    <MetadataFile FileName="Puntuaciones.xsd" MetadataType="Schema" ID="d4f22fe4-b161-4d80-bf5f-4ca016f2c5da" SourceId="1" SourceUrl="http://localhost:3198/Puntuaciones.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

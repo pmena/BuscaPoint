@@ -10,6 +10,7 @@
     <link href="/Content/jquery.prettyPhoto.css" rel="stylesheet" type="text/css" media="screen" />    
     <link href="/Content/Site.css" rel="stylesheet" type="text/css" />
     <script src="/Scripts/jquery.js" type="text/javascript" language="javascript"></script>
+    <script src="/Scripts/bootstrap-modal.js" type="text/javascript" language="javascript"></script>
     <script src="/Scripts/jquery.prettyPhoto.js" type="text/javascript" language="javascript"></script>
     <script src="/Scripts/jRating.jquery.js" type="text/javascript" language="javascript"></script>
     <script src="/Scripts/index.js" type="text/javascript" language="javascript"></script>
