@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using AplicacionSOA.Persistencia;
 using AplicacionSOA.Dominio;
+using System.Messaging;
 
 namespace AplicacionSOA
 {
@@ -14,6 +15,8 @@ namespace AplicacionSOA
     {
 
         private PuntuacionDAO dao = new PuntuacionDAO();
+
+        private string rutaCola = @".\private$\buscapoint";
 
         //Funcion que permite editar datos de un usuario de BuscaPoint
         public String Obtener_puntuacion_x_empresa(int codEmpresa, int puntuacion, int usuario)
@@ -65,18 +68,35 @@ namespace AplicacionSOA
                 }
                 else
                 {
-                    if (dao.Crear(vo) != null)
-                    {
+                        if (!MessageQueue.Exists(rutaCola))
+                            MessageQueue.Create(rutaCola);
+                        MessageQueue colaOut = new MessageQueue(rutaCola);
+                        Message mensajeOut = new Message();
+                        colaOut.Formatter = new XmlMessageFormatter(new Type[] { typeof(Puntuacion) });
+
+                        mensajeOut.Label = "Valoracion-Comentario";
+                        mensajeOut.Body = vo;
+                        colaOut.Send(mensajeOut);
+                                                
                         return "Valoración registrado correctamente.";
-                    }
-                    else
-                    {
-                        return "El servicio no esta disponible temporalmente. Intenteló más tarde.";
-                    }
                 }
             }
             return "... Mi nombre es Hetalia!";
         }
+
+        //Funcion que permite guardar datos de una puntuacion de BuscaPoint
+        public void Tomar_puntuacion_x_empresa()
+        {            
+            if (!MessageQueue.Exists(rutaCola))
+                MessageQueue.Create(rutaCola);
+            MessageQueue colaIn = new MessageQueue(rutaCola);
+            colaIn.Formatter = new XmlMessageFormatter(new Type[] { typeof(Puntuacion) });
+            Message mensajeIn = colaIn.Receive();
+            Puntuacion vo = (Puntuacion)mensajeIn.Body;
+            
+            dao.Crear(vo);
+        }
+
 
         //Funcion que permite obtener la mejor puntuacion de un servicio
         public Puntuacion getBestEmpresa(string lst) 
