@@ -31,6 +31,10 @@ namespace AplicacionSOA
         //Funcion que permite obtener la mejor puntuacion de un servicio
         [OperationContract]
         Puntuacion getBestEmpresa(string lst);
+
+        [OperationContract]
+        void Tomar_puntuacion_x_empresa();
+
     }
 
 }
