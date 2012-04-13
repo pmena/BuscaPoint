@@ -257,7 +257,7 @@ namespace AplicacionMVC.Controllers
             */
 
             //Buscar el mejor servicio para el termino indicado
-            url = "http://localhost:2998/Empresas.svc/Empresas/obtenerTerminoEmpresa/" + nombre;
+           /* url = "http://localhost:2998/Empresas.svc/Empresas/obtenerTerminoEmpresa/" + nombre;
             Response.Write(url);
 
             return View();
@@ -285,7 +285,7 @@ namespace AplicacionMVC.Controllers
             }
 
             TempData["bestEmpr"] = emps;
-            TempData["bestPunt"] = pt;
+            TempData["bestPunt"] = pt;*/
             return View();
         }
 
