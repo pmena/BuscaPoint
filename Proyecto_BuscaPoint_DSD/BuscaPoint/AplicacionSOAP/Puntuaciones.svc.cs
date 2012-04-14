@@ -52,13 +52,13 @@ namespace AplicacionSOA
                     return "Lo sentimos, se le esta permitido votar por esta empresa sólo una vez por día.";
                 }
                 else {
-                    if (dao.Crear(vo) != null)
+                    /*if (dao.Crear(vo) != null)
                     {
                         return "Valoración registrado correctamente.";
                     }
                     else {
                         return "El servicio no esta disponible temporalmente. Intenteló más tarde.";
-                    }
+                    }*/
                 }
             }
             else if (externo.Equals("N")) {
@@ -68,6 +68,8 @@ namespace AplicacionSOA
                 }
                 else
                 {
+                    try
+                    {
                         if (!MessageQueue.Exists(rutaCola))
                             MessageQueue.Create(rutaCola);
                         MessageQueue colaOut = new MessageQueue(rutaCola);
@@ -77,8 +79,12 @@ namespace AplicacionSOA
                         mensajeOut.Label = "Valoracion-Comentario";
                         mensajeOut.Body = vo;
                         colaOut.Send(mensajeOut);
-                                                
+
                         return "Valoración registrado correctamente.";
+                    }
+                    catch (Exception ex) {
+                        return ex.Message.ToString();
+                    }
                 }
             }
             return "... Mi nombre es Hetalia!";
@@ -91,10 +97,13 @@ namespace AplicacionSOA
                 MessageQueue.Create(rutaCola);
             MessageQueue colaIn = new MessageQueue(rutaCola);
             colaIn.Formatter = new XmlMessageFormatter(new Type[] { typeof(Puntuacion) });
-            Message mensajeIn = colaIn.Receive();
-            Puntuacion vo = (Puntuacion)mensajeIn.Body;
             
-            dao.Crear(vo);
+            while(colaIn.CanRead){
+                Message mensajeIn = colaIn.Receive();
+                Puntuacion vo = (Puntuacion)mensajeIn.Body;
+            
+                dao.Crear(vo);
+            }
         }
 
 
